@@ -6,7 +6,7 @@ import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Register from './pages/Register/Register';
 
-const Router = props => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
