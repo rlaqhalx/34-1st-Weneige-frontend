@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.scss';
 
-const Login = props => {
+const Login = () => {
   return <div>로그인</div>;
 };
 

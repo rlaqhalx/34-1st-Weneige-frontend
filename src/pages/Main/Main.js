@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.scss';
 
-const Main = props => {
+const Main = () => {
   return <div>메인</div>;
 };
 

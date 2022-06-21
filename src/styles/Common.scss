@@ -1,0 +1,11 @@
+/* 폰트 디폴트 값 
+   박스사이즈 디폴트 값 */
+:root {
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+}
+
+/* body에 마진 0으로 설정 */
+body {
+  margin: 0;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.scss';
 
-const Cart = props => {
+const Cart = () => {
   return <div>장바구니</div>;
 };
 

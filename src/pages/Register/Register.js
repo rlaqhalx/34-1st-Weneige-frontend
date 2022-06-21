@@ -1,7 +1,7 @@
 import React from 'react';
 import './Register.scss';
 
-const Register = props => {
+const Register = () => {
   return <div>회원가입</div>;
 };
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Router from './Router';
-import './styles/Common.scss';
-import './styles/Reset.scss';
+import './styles/reset.scss';
+import './styles/common.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React>
     <Router />
-  </React.StrictMode>
+  </React>
 );
