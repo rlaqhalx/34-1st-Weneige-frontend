@@ -35,7 +35,7 @@ const Main = () => {
                 </button>
               </div>
             </div>
-            <p>메이크업 24개 상품</p>
+            <p>메이크업 16개 상품</p>
           </div>
           <div className="productShelf">
             <Products />
