@@ -40,9 +40,15 @@ const Nav = () => {
         </li>
       </ul>
       <div className="navIcons">
-        <div className="iconProfile" />
-        <div className="iconLocation" />
-        <div className="iconSearch" />
+        <Link to="#">
+          <div className="iconProfile" />
+        </Link>
+        <Link to="#">
+          <div className="iconLocation" />
+        </Link>
+        <button className="searchButton">
+          <div className="iconSearch" />
+        </button>
       </div>
     </nav>
   );

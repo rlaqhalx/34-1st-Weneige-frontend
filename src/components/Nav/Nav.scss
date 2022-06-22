@@ -2,11 +2,12 @@
   font-family: 'Arita', sans-serif;
   position: fixed;
   width: 100%;
-  height: 6.1%;
+  height: 60px;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
   margin-bottom: 200px;
   padding-left: 2.2rem;
   padding-right: 2.2rem;
@@ -21,6 +22,7 @@
 }
 .categories {
   display: flex;
+  font-size: 1.125rem;
   li {
     list-style: none;
     font-family: 'Arita', sans-serif;
@@ -30,19 +32,19 @@
   span {
     font-size: 1.125rem;
   }
+  span:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom;
+  }
 }
 .navIcons {
-  margin-right: 30px;
-  div + div {
+  padding-right: 20px;
+  button {
+    border-style: none;
+    background-color: transparent;
+    padding: 0;
     margin-left: 20px;
-  }
-  .iconSearch {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: url('../../../public//images/navIcons/searchIcon.png') 50% 50%
-      no-repeat;
-    background-size: 100%;
+    cursor: pointer;
   }
   .iconProfile {
     display: inline-block;
@@ -56,7 +58,16 @@
     display: inline-block;
     width: 24px;
     height: 24px;
+    margin-left: 20px;
     background: url('../../../public/images/navIcons/locationIcon.png') 50% 50%
+      no-repeat;
+    background-size: 100%;
+  }
+  .iconSearch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public//images/navIcons/searchIcon.png') 50% 50%
       no-repeat;
     background-size: 100%;
   }
