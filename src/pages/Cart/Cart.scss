@@ -1,0 +1,80 @@
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}
+body {
+  background-color: #f2f2f2;
+}
+.cart {
+  margin-left: 200px;
+
+  .cartMain {
+    width: 700px;
+
+    .cartName {
+      padding: 46px 0 23px 0;
+      font-size: 50px;
+    }
+
+    .allCheckBox {
+      @include flexCenter;
+      justify-content: space-between;
+      border: 1px solid #f2f2f2;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: white;
+
+      .label {
+        @include flexCenter;
+        .woo {
+          width: 16px;
+          height: 16px;
+          background-color: black;
+        }
+      }
+    }
+
+    .cartInProducts {
+      padding: 20px;
+      background-color: white;
+
+      button {
+        border: none;
+        background-color: white;
+        color: rgb(0, 0, 0, 0.4);
+      }
+    }
+
+    .address {
+      padding-left: 100px;
+      .addressInput {
+        width: 400px;
+        align-items: center;
+      }
+    }
+
+    .order {
+      @include flexCenter;
+      position: relative;
+      height: 40px;
+      padding: 0 20px;
+      background-color: white;
+
+      p {
+        color: #7ba4db;
+      }
+
+      .orderBtn {
+        position: absolute;
+        right: 20px;
+        background-color: #7ba4db;
+        border-color: #7ba4db;
+        color: white;
+      }
+    }
+  }
+
+  .recentlyViewed {
+    display: flex;
+  }
+}
