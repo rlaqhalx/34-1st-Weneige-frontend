@@ -40,9 +40,9 @@ const Nav = () => {
         </li>
       </ul>
       <div className="navIcons">
-        <i>아이콘1</i>
-        <i>아이콘2</i>
-        <i>아이콘3</i>
+        <div className="iconProfile" />
+        <div className="iconLocation" />
+        <div className="iconSearch" />
       </div>
     </nav>
   );

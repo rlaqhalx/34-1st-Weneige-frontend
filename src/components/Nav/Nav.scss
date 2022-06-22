@@ -13,6 +13,7 @@
   border-bottom: 1px solid #d9d8d8;
 }
 .navLogo {
+  margin-left: 20px;
   img {
     width: 8rem;
     height: 3rem;
@@ -31,7 +32,32 @@
   }
 }
 .navIcons {
-  i {
-    font-size: 1.3rem;
+  margin-right: 30px;
+  div + div {
+    margin-left: 20px;
+  }
+  .iconSearch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public//images/navIcons/searchIcon.png') 50% 50%
+      no-repeat;
+    background-size: 100%;
+  }
+  .iconProfile {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/images/navIcons/profileIcon.png') 50% 50%
+      no-repeat;
+    background-size: 100%;
+  }
+  .iconLocation {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/images/navIcons/locationIcon.png') 50% 50%
+      no-repeat;
+    background-size: 100%;
   }
 }
