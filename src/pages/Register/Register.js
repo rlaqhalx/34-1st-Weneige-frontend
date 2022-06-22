@@ -2,7 +2,191 @@ import React from 'react';
 import './Register.scss';
 
 const Register = () => {
-  return <div>회원가입</div>;
+  return (
+    <div className="signUpWrap">
+      <header className="signUpHeader">
+        <div className="signUpHederBox">
+          <div className="signUpHederInner">
+            <h1 className="signUpPageTitle">정보입력 및 약관동의</h1>
+            <button type="button" className="signUpClose" />
+          </div>
+        </div>
+      </header>
+      <section className="signUpContainer">
+        <div className="secJoin">
+          <form method="post" id="joinForm">
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpName"
+                  name="signUpName"
+                  className="snpText"
+                  maxLength="12"
+                  placeholder="이름 (한글 또는 영문)"
+                  title="이름 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                성함은 4~12자 한글 또는 영문을 사용하여 입력해주세요.
+              </p>
+            </div>
+
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpId"
+                  name="signUpId"
+                  className="snpText"
+                  maxLength="12"
+                  placeholder="아이디 (영문 또는 숫자 4-12자)"
+                  title="아이디 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                아이디는 4~12자 영문 또는 숫자를 사용하여 입력해주세요.
+              </p>
+            </div>
+
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpPw"
+                  name="signUpPw"
+                  className="snpText"
+                  maxLength="16"
+                  placeholder="비밀번호 (영문 소문자, 숫자, 특수문자 조합 8-16자)"
+                  title="비밀번호 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                사용할 수 없는 비밀번호 입니다.
+                <span id="pwGuideStrength" className="securityImpossible">
+                  불가
+                </span>
+              </p>
+            </div>
+
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpPwCoFirm"
+                  name="signUpPwCoFirm"
+                  className="snpText"
+                  maxLength="12"
+                  placeholder="비밀번호 확인"
+                  title="비밀번호 확인 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                비밀번호를 한번 더 입력해 주세요.
+                <span id="pwGuideStrength" className="securityImpossible">
+                  불가
+                </span>
+              </p>
+            </div>
+
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpUserName"
+                  name="signUpUserName"
+                  className="snpText"
+                  maxLength="8"
+                  placeholder="닉네임 입력(특수문자 불가)"
+                  title="닉네임 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                사용할 수 없는 닉네임입니다.
+                <span id="pwGuideStrength" className="securityImpossible">
+                  불가
+                </span>
+              </p>
+            </div>
+
+            <div className="signUpInputForm">
+              <span className="snp" id="signUpSpan">
+                <input
+                  type="text"
+                  id="signUpAddress"
+                  name="signUpAddress"
+                  className="snpText"
+                  placeholder="주소 입력"
+                  title="주소 입력"
+                />
+                <button
+                  type="button"
+                  className="btnDel"
+                  style={{ display: 'none' }}
+                >
+                  <span className="blind">삭제</span>
+                </button>
+              </span>
+              <p id="signUpGuideText" className="signFormTextError">
+                정확한 주소를 입력해 주세요.
+                <span id="pwGuideStrength" className="securityImpossible">
+                  불가
+                </span>
+              </p>
+            </div>
+            <div className="btnSubmit">
+              <button
+                type="button"
+                id="doJoin"
+                className="signUpBtn signUpBtnBlue"
+                disabled="disabled"
+              >
+                동의하고 가입
+              </button>
+            </div>
+            <p class="txtC" id="notSetTerms">
+              가입 필수 정보 및 약관을 모두 확인해주세요.
+            </p>
+          </form>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Register;
