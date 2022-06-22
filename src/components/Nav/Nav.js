@@ -15,28 +15,28 @@ const Nav = () => {
       </div>
       <ul className="categories">
         <li>
-          <span>브랜드</span>
+          <span className="category">브랜드</span>
         </li>
         <li>
-          <span>미츠 아트</span>
+          <span className="category">미츠 아트</span>
         </li>
         <li>
-          <span>베스트 & 신상품</span>
+          <span className="category">베스트 & 신상품</span>
         </li>
         <li>
-          <span>스킨케어</span>
+          <span className="category">스킨케어</span>
         </li>
         <li>
-          <span>메이크업</span>
+          <span className="category">메이크업</span>
         </li>
         <li>
-          <span>옴므</span>
+          <span className="category">옴므</span>
         </li>
         <li>
-          <span>비스포크</span>
+          <span className="category">비스포크</span>
         </li>
         <li>
-          <span>이벤트</span>
+          <span className="category">이벤트</span>
         </li>
       </ul>
       <div className="navIcons">
