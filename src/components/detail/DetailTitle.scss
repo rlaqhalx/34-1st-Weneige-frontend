@@ -1,0 +1,118 @@
+button {
+  cursor: pointer;
+}
+
+.titleWrapper {
+  background-color: lightblue;
+  width: 390px;
+  height: auto;
+  padding: 5px;
+
+  .tagWrapper {
+    width: 330px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .tag {
+      font-size: 14px;
+    }
+  }
+
+  .title {
+    width: 260px;
+    height: 38px;
+    font-size: 25px;
+    padding: 10px 0px;
+  }
+
+  .englishTitle {
+    width: 380px;
+    height: 18px;
+    font-size: 15px;
+    padding: 15px 0px 40px 0px;
+  }
+
+  .productMainDescription {
+    width: 380px;
+    height: 84px;
+    padding-top: 15px;
+    font-size: 16px;
+    color: #5f5f5f;
+    border-bottom: 0.25px solid #5f5f5f;
+  }
+
+  .colorOption {
+    width: 380px;
+    height: 44px;
+    color: #444444;
+    font-size: 14px;
+    padding: 18px 0px 0px;
+  }
+
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    height: 51px;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .dropDownBtn {
+    width: 380px;
+    height: 50px;
+  }
+
+  .dropDownWrapper {
+    position: absolute;
+    display: none;
+    .dropDownContent {
+      width: 380px;
+      height: 50px;
+      border: 0.15px solid #444444;
+      border-top: none;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 8px;
+      background-color: white;
+
+      .price {
+        padding-top: 5px;
+      }
+    }
+  }
+
+  .purchaseStat {
+    width: 380px;
+    height: 65px;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 220px;
+    padding-bottom: 5px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    width: 380px;
+    height: 70px;
+    justify-content: space-between;
+
+    #cartBtn {
+      width: 185px;
+      height: 50px;
+      background-color: white;
+      border: 0.25px solid #7ba4db;
+    }
+
+    #purchaseBtn {
+      width: 185px;
+      height: 50px;
+      background-color: #7ba4db;
+      color: white;
+      border: none;
+    }
+  }
+}
