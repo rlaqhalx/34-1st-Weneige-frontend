@@ -7,6 +7,10 @@
     "colors": ["40호 퓨어 바이올렛", "60호 민트 그린"],
     "volume": "30ml",
     "price": "39,000원",
-    "images": ""
+    "images": [
+      "../images/detail/purple_skin_veil_base.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail02_1.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail04.jpg"
+    ]
   }
 ]

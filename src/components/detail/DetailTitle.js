@@ -9,8 +9,8 @@ const DetailTitle = ({
   colors,
   volume,
   price,
-  images,
 }) => {
+  //setImgSrc([images[0]]);
   const [dropDown, setDropDown] = useState(false);
   const [colorIdx, setColorIdx] = useState(0);
   const handleDropDown = e => {
@@ -25,8 +25,12 @@ const DetailTitle = ({
   return (
     <div className="titleWrapper">
       <p className="tagWrapper">
-        {tags.map(tag => {
-          return <span className="tag"> {tag} </span>;
+        {tags.map((tag, index) => {
+          return (
+            <span key={index} className="tag">
+              {tag}
+            </span>
+          );
         })}
       </p>
       <p className="title"> {korName} </p>
@@ -52,7 +56,12 @@ const DetailTitle = ({
       >
         {colors.map((color, index) => {
           return (
-            <button className="dropDownContent" onClick={addToCart} id={index}>
+            <button
+              key={index}
+              className="dropDownContent"
+              onClick={addToCart}
+              id={index}
+            >
               {color} {volume} <span className="price">{price}</span>
             </button>
           );
