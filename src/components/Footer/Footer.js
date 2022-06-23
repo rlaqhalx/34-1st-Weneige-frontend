@@ -16,28 +16,48 @@ const Footer = () => {
           <Link to="#">공지사항</Link>
         </div>
         <div className="socialLinks">
-          <a href="#" className="instaIcon">
+          <a
+            target="_blank"
+            href="https://www.instagram.com"
+            className="instaIcon"
+            rel="noreferrer"
+          >
             <img
               src="https://www.laneige.com/kr/ko/assets/image/sns_instagram_renew.png"
               alt="instagram icon"
             />
           </a>
-          <a href="#" className="facebookIcon">
+          <a
+            target="_blank"
+            href="https://www.facebook.com"
+            className="facebookIcon"
+            rel="noreferrer"
+          >
             <img
               src="	https://www.laneige.com/kr/ko/assets/image/sns_facebook_renew.png"
               alt="facebook icon"
             />
           </a>
-          <a href="#" className="youtubeIcon">
+          <a
+            target="_blank"
+            href="https://www.youtube.com"
+            className="youtubeIcon"
+            rel="noreferrer"
+          >
             <img
               src="https://www.laneige.com/kr/ko/assets/image/sns_youtube_renew.png"
               alt="youtube icon"
             />
           </a>
-          <a href="#" className="tictokIcon">
+          <a
+            target="_blank"
+            href="https://www.tiktok.com"
+            className="tiktokIcon"
+            rel="noreferrer"
+          >
             <img
               src="	https://www.laneige.com/kr/ko/assets/image/sns_tiktok_renew.png"
-              alt="tictok icon"
+              alt="tiktok icon"
             />
           </a>
         </div>
