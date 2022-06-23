@@ -52,7 +52,14 @@ body {
         align-items: center;
       }
     }
-
+    .addressAndName {
+      @include flexCenter;
+      padding-left: 20px;
+      background-color: white;
+      p {
+        padding: 20px;
+      }
+    }
     .order {
       @include flexCenter;
       position: relative;

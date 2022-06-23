@@ -1,14 +1,9 @@
-.products {
+.productList {
   display: flex;
   flex-direction: column;
-
   padding: 20px;
   background-color: white;
   border-top: 1px solid rgb(0, 0, 0, 0.1);
-
-  p {
-    display: inline;
-  }
 
   .sellerInfo {
     border-radius: 15px;
@@ -31,16 +26,42 @@
       padding: 0 20px;
     }
     .productName {
+      display: inline;
       padding: 0 10px;
     }
 
     .deleteBtn {
       position: absolute;
-      top: 0px;
-      right: 0px;
-      border: none;
-      background-color: white;
-      color: rgb(0, 0, 0, 0.4);
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border: 0;
+      background: #fff;
+      font-size: 0;
+      line-height: 0;
+      text-indent: -9999px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 1px;
+        background-color: #000;
+        transform: rotate(45deg);
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 1px;
+        background-color: #000;
+        transform: rotate(128deg);
+      }
     }
   }
 
@@ -50,15 +71,13 @@
     justify-content: space-between;
     padding: 20px 10px;
     border: 1px solid rgb(0, 0, 0, 0.1);
-    .deleteBtn {
-      border: none;
-      background-color: white;
-      color: rgb(0, 0, 0, 0.4);
-    }
 
     .count {
-      input {
+      display: flex;
+      .quanttshin {
+        border: 1px solid black;
         width: 30px;
+
         text-align: center;
       }
     }
