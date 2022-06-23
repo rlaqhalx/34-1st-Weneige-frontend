@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Categories from './Categories';
 import './Nav.scss';
 
 const Nav = () => {
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const showBar = () => {
+    setShowSearchBar(prev => !prev);
+  };
   return (
     <nav className="navBar">
       <div className="navLogo">
@@ -14,30 +19,7 @@ const Nav = () => {
         </Link>
       </div>
       <ul className="categories">
-        <li>
-          <span className="category">브랜드</span>
-        </li>
-        <li>
-          <span className="category">미츠 아트</span>
-        </li>
-        <li>
-          <span className="category">베스트 & 신상품</span>
-        </li>
-        <li>
-          <span className="category">스킨케어</span>
-        </li>
-        <li>
-          <span className="category">메이크업</span>
-        </li>
-        <li>
-          <span className="category">옴므</span>
-        </li>
-        <li>
-          <span className="category">비스포크</span>
-        </li>
-        <li>
-          <span className="category">이벤트</span>
-        </li>
+        <Categories />
       </ul>
       <div className="navIcons">
         <Link to="#">
@@ -46,11 +28,50 @@ const Nav = () => {
         <Link to="#">
           <div className="iconLocation" />
         </Link>
-        <button className="searchButton">
+        <span className="searchButton" onClick={showBar}>
           <div className="iconSearch" />
-        </button>
+        </span>
+        {showSearchBar && <SearchBar />}
       </div>
     </nav>
+  );
+};
+
+// 작업 완료되는 대로 분리 필요
+const SearchBar = () => {
+  return (
+    <div className="searchPad">
+      <div className="search">
+        <div className="searchWrap">
+          <form className="searchForm">
+            <div className="searchBox">
+              <span className="inputSearchIcon" />
+              <input
+                type="search"
+                placeholder="검색어를 입력해 주세요"
+                className="searchInput"
+              />
+            </div>
+            <button className="searchButton">검색</button>
+          </form>
+          <div className="searchRecommends">
+            <span>추천 검색어</span>
+            <Link to="#" className="tags">
+              볼륨 마스카라
+            </Link>
+            <Link to="#" className="tags">
+              소프트 네츄럴 립스틱
+            </Link>
+            <Link to="#" className="tags">
+              하이드레이팅 프라이머
+            </Link>
+            <Link to="#" className="tags">
+              시그니처 브로우 펜슬
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

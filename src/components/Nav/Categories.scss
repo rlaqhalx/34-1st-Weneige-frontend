@@ -1,0 +1,40 @@
+.categories {
+  display: flex;
+  font-size: 1.125rem;
+  .category {
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+  .category:hover {
+    font-weight: bolder;
+    cursor: pointer;
+  }
+  .category:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    top: 2.3rem;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+  }
+  .category:hover:after {
+    transform: scaleX(1.5);
+    transform-origin: bottom center;
+  }
+
+  li {
+    list-style: none;
+    font-family: 'Arita', sans-serif;
+    letter-spacing: -0.025em;
+    padding: 0 1.2rem;
+  }
+  span {
+    font-size: 1.125rem;
+  }
+}
