@@ -1,23 +1,28 @@
 import './SortingButtonOptions.scss';
 
-const SortButtonOptions = ({ titleChange, show, abcSort, priceSort }) => {
+const SortButtonOptions = ({
+  titleChange,
+  showOptions,
+  sortAscByLetter,
+  sortDescByPrice,
+}) => {
   const changeTitleABC = () => {
     titleChange('가나다 순');
-    show();
-    abcSort();
+    showOptions();
+    sortAscByLetter();
   };
   const changeTitlePrice = () => {
-    titleChange('가격 순');
-    show();
-    priceSort();
+    titleChange('가격 순(고가 순)');
+    showOptions();
+    sortDescByPrice();
   };
   return (
     <div className="optionContainer">
-      <div className="abc">
+      <div>
         <button onClick={changeTitleABC}>가나다 순</button>
       </div>
-      <div className="price">
-        <button onClick={changeTitlePrice}>가격 순</button>
+      <div>
+        <button onClick={changeTitlePrice}>가격 순(고가 순)</button>
       </div>
     </div>
   );

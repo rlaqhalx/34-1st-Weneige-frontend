@@ -4,31 +4,27 @@ import SortingButton from './SortingButton';
 import './Main.scss';
 
 const Main = () => {
-  const [productData, setProductData] = useState([]);
+  const [productList, setProductList] = useState([]);
   useEffect(() => {
     fetch('data/productData.json')
       .then(res => res.json())
       .then(data => {
-        setProductData(data);
+        setProductList(data);
       });
   }, []);
 
-  const abcSort = () => {
-    let abcSorting = [...productData];
-    let abcCompare = key => (a, b) => {
-      return a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0;
-    };
-    abcSorting.sort(abcCompare('title'));
-    setProductData(abcSorting);
+  const sortAscByLetter = () => {
+    let listSortedByKoreanAlphabet = [...productList].sort((a, b) =>
+      a.title > b.title ? 1 : -1
+    );
+    setProductList(listSortedByKoreanAlphabet);
   };
 
-  const priceSort = () => {
-    let priceSorting = [...productData];
-    let priceCompare = key => (a, b) => {
-      return a[key] < b[key] ? 1 : a[key] > b[key] ? -1 : 0;
-    };
-    priceSorting.sort(priceCompare('price'));
-    setProductData(priceSorting);
+  const sortDescByPrice = () => {
+    let listSortedByPrice = [...productList].sort((a, b) =>
+      b.price > a.price ? 1 : -1
+    );
+    setProductList(listSortedByPrice);
   };
   return (
     <>
@@ -41,7 +37,7 @@ const Main = () => {
           position: 'fixed',
           width: '100%',
           top: '0',
-          zIndex: '101', // Nav에 추후 추가 필요
+          zIndex: '101', // TODO: Nav에 추후 추가 필요
         }}
       >
         nav
@@ -57,13 +53,30 @@ const Main = () => {
                 </button>
               </div>
               <div className="alignButton">
-                <SortingButton abcSort={abcSort} priceSort={priceSort} />
+                <SortingButton
+                  sortAscByLetter={sortAscByLetter}
+                  sortDescByPrice={sortDescByPrice}
+                />
               </div>
             </div>
             <p>메이크업 16개 상품</p>
           </div>
           <div className="productsContainer">
-            <Products productData={productData} />
+            {productList.map(
+              ({ id, img, title, price, hashtxt1, hashtxt2 }) => {
+                return (
+                  <Products
+                    key={id}
+                    img={img}
+                    title={title}
+                    price={price}
+                    hashtxt1={hashtxt1}
+                    hashtxt2={hashtxt2}
+                  />
+                );
+              }
+            )}
+            {/* <Products productData={productData} /> */}
           </div>
         </section>
       </div>
@@ -80,7 +93,5 @@ const Main = () => {
     </>
   );
 };
-
-//
 
 export default Main;

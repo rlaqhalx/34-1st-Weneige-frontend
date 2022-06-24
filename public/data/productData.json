@@ -3,7 +3,7 @@
     "id": 1,
     "img": "/images/main/시그니처 브로우 펜슬.jpeg",
     "title": "시그니처 브로우 펜슬",
-    "price": "39000원",
+    "price": 39000,
     "hashtxt1": "#Meets Arts",
     "hashtxt2": "#Artist NOVO"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "img": "/images/main/리퀴드 아이라이너.jpeg",
     "title": "리퀴드 아이라이너",
-    "price": "28000원",
+    "price": 28000,
     "hashtxt1": "#나만의 네오",
     "hashtxt2": "#톤떡궁합"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "img": "/images/main/볼륨 마스카라.jpeg",
     "title": "볼륨 마스카라",
-    "price": "38000원",
+    "price": 38000,
     "hashtxt1": "#벚꽃컬렉션",
     "hashtxt2": "#벚꽃립밤"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "img": "/images/main/소프트 네츄럴 립스틱.jpeg",
     "title": "소프트 네츄럴 립스틱",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#벚꽃컬렉션",
     "hashtxt2": "#리미티드에디션"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "img": "/images/main/비건 샤인 립밤.jpeg",
     "title": "비건 샤인 립밤",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#나에게 맞는 톤 업",
     "hashtxt2": "#프리미엄 메이크업 베이스 1위"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "img": "/images/main/블루밍 에디션 립스틱.jpeg",
     "title": "블루밍 에디션 립스틱",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#모공실종",
     "hashtxt2": "#결자국 NO"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "img": "/images/main/워터립 틴트.jpeg",
     "title": "워터 립 틴트",
-    "price": "39000원",
+    "price": 39000,
     "hashtxt1": "#진주빛립밤",
     "hashtxt2": "#3단립케어"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "img": "/images/main/소프트 터치 립 틴트.jpeg",
     "title": "소프트 터치 립 틴트",
-    "price": "25000원",
+    "price": 25000,
     "hashtxt1": "#고채도립",
     "hashtxt2": "#하나로완벽하게"
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "img": "/images/main/내츄럴 마스카라.jpeg",
     "title": "내츄럴 마스카라",
-    "price": "39000원",
+    "price": 39000,
     "hashtxt1": "#고채도립",
     "hashtxt2": "#하나로완벽하게"
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "img": "/images/main/하이드레이팅 프라이머.jpeg",
     "title": "하이드레이팅 프라이머",
-    "price": "39000원",
+    "price": 39000,
     "hashtxt1": "#구름결커버",
     "hashtxt2": "#자연광커버"
   },
@@ -83,7 +83,7 @@
     "id": 11,
     "img": "/images/main/블랜딩 아이브로우.jpeg",
     "title": "블랜딩 아이브로우",
-    "price": "39000원",
+    "price": 39000,
     "hashtxt1": "#햇살필터",
     "hashtxt2": "#자연광커버"
   },
@@ -91,7 +91,7 @@
     "id": 12,
     "img": "/images/main/세컨 스킨 컨실러.jpeg",
     "title": "세컨 스킨 컨실러",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#하루종일지속",
     "hashtxt2": "#이중잠금커버"
   },
@@ -99,7 +99,7 @@
     "id": 13,
     "img": "/images/main/블러링 립틴트.jpeg",
     "title": "블러링 립틴트",
-    "price": "25000원",
+    "price": 25000,
     "hashtxt1": "#네오피니셔",
     "hashtxt2": "#블러핑픽스"
   },
@@ -107,7 +107,7 @@
     "id": 14,
     "img": "/images/main/퍼펙트 파우더.jpeg",
     "title": "퍼펙트 파우더",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#스밈틴트",
     "hashtxt2": "#아쿠아글로우"
   },
@@ -115,7 +115,7 @@
     "id": 15,
     "img": "/images/main/커버 쿠션.jpeg",
     "title": "커버 쿠션",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#휘핑IN틴트",
     "hashtxt2": "#벨벳틴트"
   },
@@ -123,7 +123,7 @@
     "id": 16,
     "img": "/images/main/원터치 아이라이너.jpeg",
     "title": "원터치 아이라이너",
-    "price": "40000원",
+    "price": 40000,
     "hashtxt1": "#반사광쿠션",
     "hashtxt2": "#다이아글로우"
   }

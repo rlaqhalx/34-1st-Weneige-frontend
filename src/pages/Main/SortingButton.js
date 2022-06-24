@@ -2,22 +2,22 @@ import { useState } from 'react';
 import SortButtonOptions from './SortingButtonOptions';
 import './SortingButton.scss';
 
-const SortingButton = ({ priceSort, abcSort }) => {
-  const [show, setShow] = useState(false);
+const SortingButton = ({ sortAscByLetter, sortDescByPrice }) => {
+  const [isShowOptions, setIsShowOptions] = useState(false);
   const [buttonTitle, setButtonTitle] = useState('정렬');
   const showList = () => {
-    setShow(prev => !prev);
+    setIsShowOptions(prev => !prev);
   };
 
   return (
     <>
       <button onClick={showList}>{buttonTitle}</button>
-      {show && (
+      {isShowOptions && (
         <SortButtonOptions
-          show={setShow}
+          showOptions={setIsShowOptions}
           titleChange={setButtonTitle}
-          priceSort={priceSort}
-          abcSort={abcSort}
+          sortAscByLetter={sortAscByLetter}
+          sortDescByPrice={sortDescByPrice}
         />
       )}
     </>
