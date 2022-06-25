@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+.signUpWrap {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Nanum Gothic', sans-serif;
+
+  .signUpHeader {
+    height: 55px;
+
+    .signUpHederBox {
+      position: fixed;
+      width: 100%;
+      height: 55px;
+      background-color: #fff;
+      border-bottom: 1px solid #dfdfdf;
+      z-index: 100;
+      border-bottom: 1px solid #f0f0f0;
+      box-shadow: 0 0 30px 0 rgb(255 255 255 / 90%);
+
+      .signUpHederInner {
+        max-width: 520px;
+        margin: 0 auto;
+        max-width: 768px;
+        position: relative;
+
+        .signUpPageTitle {
+          line-height: 54px;
+          font-weight: 500;
+          font-size: 16px;
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .signUpClose {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 60px;
+          height: 54px;
+          background: url(../../assets/images/btnTitleClose.png) no-repeat 50%
+            50%;
+          -webkit-background-size: 23px auto;
+          background-size: 23px auto;
+          border-style: none;
+        }
+      }
+    }
+  }
+
+  .signUpContainer {
+    padding: 10px 20px;
+    margin: 0 auto;
+    max-width: 520px;
+    // border-bottom: 1px solid #dfdfdf;
+    border-top: none;
+    padding-bottom: 40px;
+
+    .secJoin {
+      margin-top: 40px;
+
+      .joinForm {
+        .signUpInputForm {
+          margin-bottom: 15px;
+
+          .snp {
+            position: relative;
+            display: block;
+
+            .snpText {
+              padding: 0 12px;
+              width: 100%;
+              height: 50px;
+              line-height: 48px;
+              color: #252525;
+              font-size: 18px;
+              letter-spacing: -0.7px;
+              border: 1px solid #e6e6e6;
+              border-radius: 6px;
+              -webkit-appearance: none;
+              appearance: none;
+            }
+
+            .btnDel {
+              display: none;
+            }
+          }
+
+          .signFormTextError {
+            color: #f23636;
+            border-color: #f23636 !important;
+            padding: 10px 0;
+            font-size: 16px;
+            line-height: 1.38;
+            letter-spacing: -0.65px;
+          }
+        }
+
+        .btnSubmit {
+          margin-top: 25px;
+
+          .signUpBtn {
+            width: 100%;
+            height: 60px;
+            border-radius: 6px;
+            font-size: 18px;
+            letter-spacing: -0.8px;
+          }
+
+          .signUpBtnBlue {
+            border: solid 1px #5c95f0;
+            background-color: #5c95f0;
+            color: #fff;
+          }
+        }
+
+        .txtC {
+          margin: 15px 0;
+          text-align: center;
+          color: #898989;
+          letter-spacing: -0.7px;
+          line-height: 1.43;
+        }
+      }
+    }
+  }
+}
