@@ -1,8 +1,8 @@
 import React from 'react';
-import './nav.scss';
+import './Nav.scss';
 
 const Nav = () => {
-  return <div>컴포넌트</div>;
+  return <div>Nav</div>;
 };
 
 export default Nav;
