@@ -25,6 +25,7 @@
       height: 100px;
       padding: 0 20px;
     }
+
     .productName {
       display: inline;
       padding: 0 10px;
@@ -52,6 +53,7 @@
         background-color: #000;
         transform: rotate(45deg);
       }
+
       &::before {
         content: '';
         position: absolute;
@@ -74,10 +76,15 @@
 
     .count {
       display: flex;
-      .quanttshin {
-        border: 1px solid black;
-        width: 30px;
 
+      button {
+        border: 0;
+        background-color: white;
+      }
+
+      .quanttshin {
+        border: 0;
+        width: 30px;
         text-align: center;
       }
     }

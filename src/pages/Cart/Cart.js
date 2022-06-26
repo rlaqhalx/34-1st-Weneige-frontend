@@ -1,45 +1,75 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductList from './ProductList';
-import { useEffect, useState } from 'react';
+import Empty from './Empty';
 import './Cart.scss';
+import '../../styles/common.scss';
+import '../../styles/reset.scss';
 
 const Cart = () => {
   const [orderList, setOrderList] = useState([]);
-  const [address, setAddress] = useState([]);
+  const [checkedItem, setCheckedItem] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/cart.json')
+    fetch('/data/cart.json')
       .then(res => res.json())
-      .then(data => {
-        setOrderList(data);
+      .then(result => {
+        setOrderList(result);
       });
   }, []);
 
-  useEffect(() => {
-    fetch('http://localhost:3000/data/signup.json')
-      .then(res => res.json())
-      .then(data => {
-        setAddress(data);
-      });
-  }, []);
+  const handleOnChange = () => {
+    setCheckedItem(!checkedItem);
+  };
+
+  const hide = () => {
+    setVisible(!visible);
+  };
+  const handleChecked = e => {
+    setCheckedItem(e.target.checked);
+  };
 
   const orderConfirm = () => {
-    if (window.confirm('주문하시겠습니까?')) {
-      alert('주문이 완료 되었습니다');
-    } else {
-      alert('주문이 취소 되었습니다');
+    if (orderList.length !== 0) {
+      if (window.confirm('주문하시겠습니까?')) {
+        alert('주문이 완료 되었습니다');
+      } else {
+        alert('주문이 취소 되었습니다');
+      }
+    }
+  };
+
+  const allDeleteConfirm = () => {
+    if (window.confirm('삭제 하시겠습니까??')) {
+      let copy = [...orderList];
+      copy.splice(orderList);
+      setOrderList(copy);
     }
   };
 
   const deleteConfirm = () => {
     if (window.confirm('삭제 하시겠습니까??')) {
-      // let copy = [...orderList];
-      // copy.splice(0, 1);
-      // setOrderList(copy);
+      let copy = [...orderList];
+      copy.splice(orderList.product_options_id, 1);
+      setOrderList(copy);
     }
   };
+  const totalPrice = (a, b) => {
+    return (a = a + b.price * b.quantity);
+  };
+  const totalq = orderList.reduce(totalPrice, 0).toLocaleString();
 
-  let count = 0;
+  const onChangeProps = (id, key, value) => {
+    setOrderList(prevState => {
+      return prevState.map(obj => {
+        if (obj.product_options_id === id) {
+          return { ...obj, [key]: value };
+        } else {
+          return { ...obj };
+        }
+      });
+    });
+  };
 
   return (
     <div className="cart">
@@ -48,49 +78,56 @@ const Cart = () => {
         <div className="cartName">장바구니</div>
         <div className="allCheckBox">
           <div className="label">
-            <input type="checkbox" className="woo" />
+            <input
+              type="checkbox"
+              className="woo"
+              checked={checkedItem}
+              onChange={handleOnChange}
+            />
             <p>전체선택</p>
           </div>
-          <button className="selectDeleteBtn" onClick={deleteConfirm}>
+          {/* <button className="selectDeleteBtn" onClick={deleteConfirm}>
             선택삭제
+          </button> */}
+          <button className="allDeleteBtn" onClick={allDeleteConfirm}>
+            전체삭제
           </button>
         </div>
         <div>
           <p className="cartInProducts">
             <strong>장바구니에 담긴 상품</strong>
-            <button>V</button>
+            <button className="hideBtn" onClick={hide}>
+              {visible ? '▲' : '▼'}
+            </button>
           </p>
         </div>
-        {orderList.map((order, i) => {
-          count = count + order.price * order.quantity;
-          return (
-            <ProductList
-              key={order.id}
-              order={order}
-              deleteConfirm={deleteConfirm}
-              orderList={orderList}
-              setOrderList={setOrderList}
-              i={i}
-              count={count}
-            />
-          );
-        })}
-        <div className="addressAndName">
-          {address.map(order => {
+        {orderList.length === 0 && <Empty />}
+        {visible &&
+          orderList.map((order, i) => {
             return (
-              <>
-                <p>배송지 :{order.address}</p>
-                <p>{order.name}</p>
-              </>
+              <ProductList
+                key={order.product_options_id}
+                order={order}
+                id={order.product_options_id}
+                deleteConfirm={() => deleteConfirm(order.product_options_id)}
+                orderList={orderList}
+                setOrderList={setOrderList}
+                onChangeProps={onChangeProps}
+                handleChecked={handleChecked}
+                i={i}
+              />
             );
           })}
+        <div className="addressAndName">
+          {/* <p>배송지 :{orderList[0].address}</p>
+          <p>{orderList.name}</p> */}
         </div>
         <div className="order">
           <p>결제 예정 금액</p>
-          <p>{count}</p>
-
+          {/* <p>{checkedItem === true && totalq}원</p> */}
+          <p>{totalq}원</p>
           <button className="orderBtn" onClick={orderConfirm}>
-            주문하기(countOrder)
+            주문하기({orderList.length}개)
           </button>
         </div>
       </div>
