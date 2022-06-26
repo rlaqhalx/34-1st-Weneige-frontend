@@ -1,12 +1,21 @@
 import React from 'react';
 import './Login.scss';
+// import InputLogSign from '../../components/InputLogSign/InputLogSign';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
-  const [userId, setUserId] = useState(''); // 얘는 변수명이라 카멜케이스
-  const [userPw, setUserPw] = useState(''); // 얘는 변수명이라 카멜케이스
+  // const [userId, setUserId] = useState(''); // 얘는 변수명이라 카멜케이스
+  // const [userPw, setUserPw] = useState(''); // 얘는 변수명이라 카멜케이스
+  const [inputValue, setInputValue] = useState({
+    id: '',
+    pw: '',
+  });
+
   const [userBtn, setUserBtn] = useState(false);
+
+  const { id, pw } = inputValue;
 
   const navigate = useNavigate();
 
@@ -14,8 +23,13 @@ const Login = () => {
     navigate('/main');
   };
 
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
   const activeLogin = () => {
-    if (userId !== '' && userId.includes('@') && userPw.length >= 5) {
+    if (id !== '' && id.includes('@') && pw.length >= 5) {
       setUserBtn(true);
     } else {
       setUserBtn(false);
@@ -46,7 +60,6 @@ const Login = () => {
             action="http://www.example.com/form.html/"
             method="post"
             name=""
-            id="login"
             onSubmit={event => {
               event.preventDefault();
               goToMain();
@@ -64,12 +77,13 @@ const Login = () => {
             <div className="loginInputForm">
               <span className="inp">
                 <input
-                  value={userId}
+                  value={id}
+                  name="id"
                   type="text"
                   autoComplete="off"
                   className="inpText"
                   placeholder="아이디 입력"
-                  onInput={e => setUserId(prev => (prev = e.target.value))}
+                  onChange={handleInput}
                   onKeyUp={activeLogin}
                   title="아이디 입력"
                 />
@@ -81,12 +95,13 @@ const Login = () => {
             <div className="loginInputForm">
               <span className="inp">
                 <input
-                  value={userPw}
+                  value={pw}
+                  name="pw"
                   type="password"
                   autoComplete="off"
                   className="inpText"
                   placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)"
-                  onInput={e => setUserPw(prev => (prev = e.target.value))}
+                  onChange={handleInput}
                   onKeyUp={activeLogin}
                   title="비밀번호 입력"
                 />
@@ -111,10 +126,12 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <button className="btnJoinMembership">
-            <span>아직 회원이 아니세요?</span>
-            <em>회원가입</em>
-          </button>
+          <Link to="/register">
+            <button className="btnJoinMembership">
+              <span>아직 회원이 아니세요?</span>
+              <em>회원가입</em>
+            </button>
+          </Link>
         </div>
       </section>
     </div>
