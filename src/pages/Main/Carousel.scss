@@ -1,0 +1,38 @@
+.carousel {
+  overflow: hidden;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  img {
+    width: 100%;
+  }
+}
+
+.carouselItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  button {
+    margin: 5px;
+    cursor: pointer;
+    border-style: none;
+    background-color: #fff;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .active {
+    background-color: #eaeaea;
+  }
+  .choose {
+    border-radius: 50%;
+    border: 1px solid #eaeaea;
+  }
+}
