@@ -14,7 +14,7 @@ const Cart = () => {
     fetch('/data/cart.json')
       .then(res => res.json())
       .then(result => {
-        setOrderList(result);
+        setOrderList(result.results);
       });
   }, []);
 
@@ -24,9 +24,6 @@ const Cart = () => {
 
   const hide = () => {
     setVisible(!visible);
-  };
-  const handleChecked = e => {
-    setCheckedItem(e.target.checked);
   };
 
   const orderConfirm = () => {
@@ -40,20 +37,28 @@ const Cart = () => {
   };
 
   const allDeleteConfirm = () => {
-    if (window.confirm('삭제 하시겠습니까??')) {
-      let copy = [...orderList];
-      copy.splice(orderList);
-      setOrderList(copy);
+    if (orderList.length !== 0) {
+      if (window.confirm('삭제 하시겠습니까??')) {
+        let copy = [...orderList];
+        copy.splice(orderList);
+        setOrderList(copy);
+      }
     }
   };
 
-  const deleteConfirm = () => {
-    if (window.confirm('삭제 하시겠습니까??')) {
-      let copy = [...orderList];
-      copy.splice(orderList.product_options_id, 1);
-      setOrderList(copy);
-    }
+  // const deleteConfirm = () => {
+  //   if (window.confirm('삭제 하시겠습니까??')) {
+  //     let copy = [...orderList];
+  //     copy.splice(orderList.product_options_id, 1);
+  //     setOrderList(copy);
+  //   }
+  // };
+
+  const deleteProduct = id => {
+    const fil = orderList.filter(it => it.product_options_id !== id);
+    setOrderList(fil);
   };
+
   const totalPrice = (a, b) => {
     return (a = a + b.price * b.quantity);
   };
@@ -74,61 +79,64 @@ const Cart = () => {
   return (
     <div className="cart">
       <div>nav</div>
-      <div className="cartMain">
-        <div className="cartName">장바구니</div>
-        <div className="allCheckBox">
-          <div className="label">
-            <input
-              type="checkbox"
-              className="woo"
-              checked={checkedItem}
-              onChange={handleOnChange}
-            />
-            <p>전체선택</p>
-          </div>
-          {/* <button className="selectDeleteBtn" onClick={deleteConfirm}>
+      <div className="cartWrap">
+        <div className="cartMain">
+          <div className="cartName">장바구니</div>
+          <div className="allCheckBox">
+            <div className="label">
+              <input
+                type="checkbox"
+                className="woo"
+                checked={checkedItem}
+                onChange={handleOnChange}
+              />
+              <p>전체선택</p>
+            </div>
+            {/* <button className="selectDeleteBtn" onClick={deleteConfirm}>
             선택삭제
           </button> */}
-          <button className="allDeleteBtn" onClick={allDeleteConfirm}>
-            전체삭제
-          </button>
-        </div>
-        <div>
-          <p className="cartInProducts">
-            <strong>장바구니에 담긴 상품</strong>
-            <button className="hideBtn" onClick={hide}>
-              {visible ? '▲' : '▼'}
+            <button className="allDeleteBtn" onClick={allDeleteConfirm}>
+              전체삭제
             </button>
-          </p>
-        </div>
-        {orderList.length === 0 && <Empty />}
-        {visible &&
-          orderList.map((order, i) => {
-            return (
-              <ProductList
-                key={order.product_options_id}
-                order={order}
-                id={order.product_options_id}
-                deleteConfirm={() => deleteConfirm(order.product_options_id)}
-                orderList={orderList}
-                setOrderList={setOrderList}
-                onChangeProps={onChangeProps}
-                handleChecked={handleChecked}
-                i={i}
-              />
-            );
-          })}
-        <div className="addressAndName">
-          {/* <p>배송지 :{orderList[0].address}</p>
-          <p>{orderList.name}</p> */}
-        </div>
-        <div className="order">
-          <p>결제 예정 금액</p>
-          {/* <p>{checkedItem === true && totalq}원</p> */}
-          <p>{totalq}원</p>
-          <button className="orderBtn" onClick={orderConfirm}>
-            주문하기({orderList.length}개)
-          </button>
+          </div>
+          <div>
+            <p className="cartInProducts">
+              <strong>장바구니에 담긴 상품</strong>
+              <button className="hideBtn" onClick={hide}>
+                {visible ? '▲' : '▼'}
+              </button>
+            </p>
+          </div>
+          {orderList.length === 0 && <Empty />}
+          {visible &&
+            orderList.map((order, i) => {
+              return (
+                <ProductList
+                  key={order.product_options_id}
+                  order={order}
+                  orderList={orderList}
+                  setOrderList={setOrderList}
+                  i={i}
+                  id={order.product_options_id}
+                  onChangeProps={onChangeProps}
+                  deleteProduct={deleteProduct}
+                  // deleteConfirm={() => deleteConfirm(order.product_options_id)}
+                  // handleChecked={handleChecked}
+                />
+              );
+            })}
+          <div className="addressAndName">
+            <p>배송지 :{orderList[0]?.address}</p>
+            <p>{orderList[0]?.name}</p>
+          </div>
+          <div className="order">
+            <p>결제 예정 금액</p>
+            {/* <p>{checkedItem === true && totalq}원</p> */}
+            <p>{totalq}원</p>
+            <button className="orderBtn" onClick={orderConfirm}>
+              주문하기({orderList.length}개)
+            </button>
+          </div>
         </div>
       </div>
       <div>footer</div>

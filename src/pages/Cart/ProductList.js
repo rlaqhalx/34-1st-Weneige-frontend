@@ -3,51 +3,42 @@ import './ProductList.scss';
 
 const ProductList = ({
   order,
-  // deleteConfirm,
   orderList,
   setOrderList,
-
   i,
   onChangeProps,
-
+  // deleteProduct,
   id,
 }) => {
-  const { kor_name, price, color, quantity, image_url } = order;
+  const { kor_name, price, color, quantity, image_url, product_options_id } =
+    order;
   const deleteProduct = () => {
     let copy = [...orderList];
     copy.splice(i, 1);
     setOrderList(copy);
   };
 
-  const amountIncreaseHandler = event => {
-    event.preventDefault();
+  const increaseHandler = () => {
     if (quantity < 10) {
-      onChangeProps(id, 'quantity', quantity + 1);
+      onChangeProps(product_options_id, 'quantity', quantity + 1);
     } else {
       alert('구매가능한 수량 초과 입니다');
     }
   };
 
-  const amountDecreaseHandler = event => {
-    event.preventDefault();
+  const decreaseHandler = () => {
     if (quantity > 1) {
-      onChangeProps(id, 'quantity', quantity - 1);
+      onChangeProps(product_options_id, 'quantity', quantity - 1);
     } else {
       deleteProduct();
     }
   };
 
-  const won = (price * orderList[i].quantity).toLocaleString();
+  const won = (price * quantity).toLocaleString();
 
   return (
     <div className="productList">
       <div className="productDetail">
-        {/* <input
-          type="checkbox"
-          className="productCheckBox"
-          isChecked={checkedItem}
-          onChange={handleChecked}
-        /> */}
         <img src={image_url} alt="skin" className="productImg" />
         <p className="productName">{kor_name}</p>
         <button className="deleteBtn" onClick={deleteProduct}>
@@ -57,9 +48,9 @@ const ProductList = ({
       <div className="productOption">
         <p>{color}</p>
         <div className="count">
-          <button onClick={amountDecreaseHandler}>-</button>
+          <button onClick={decreaseHandler}>-</button>
           <input className="quanttshin" value={quantity} />
-          <button onClick={amountIncreaseHandler}>+</button>
+          <button onClick={increaseHandler}>+</button>
         </div>
         <div className="price">
           <div className="fixedPrice">{won}원</div>
