@@ -5,13 +5,13 @@ import SearchBar from './SearchBar';
 import './Nav.scss';
 
 const Nav = () => {
-  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [isShowSearchBar, setIsShowSearchBar] = useState(false);
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
   };
   const showBar = () => {
-    setShowSearchBar(prev => !prev);
+    setIsShowSearchBar(prev => !prev);
   };
   return (
     <nav className="navBar">
@@ -37,7 +37,7 @@ const Nav = () => {
         <span className="searchButton" onClick={showBar}>
           <div className="iconSearch" />
         </span>
-        {showSearchBar && <SearchBar />}
+        {isShowSearchBar && <SearchBar />}
       </div>
     </nav>
   );

@@ -1,31 +1,35 @@
 .categories {
   display: flex;
   font-size: 1.125rem;
+
   .category {
     display: inline-block;
     position: relative;
     color: black;
-  }
-  .category:hover {
-    font-weight: bolder;
-    cursor: pointer;
-  }
-  .category:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: 0;
-    top: 2.3rem;
-    left: 0;
-    background-color: black;
-    transform-origin: bottom center;
-    transition: transform 0.25s ease-out;
-  }
-  .category:hover:after {
-    transform: scaleX(1.5);
-    transform-origin: bottom center;
+
+    &:hover {
+      font-weight: bolder;
+      cursor: pointer;
+    }
+
+    &:hover:after {
+      transform: scaleX(1.5);
+      transform-origin: bottom center;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 3px;
+      bottom: 0;
+      top: 2.3rem;
+      left: 0;
+      background-color: black;
+      transform-origin: bottom center;
+      transition: transform 0.25s ease-out;
+    }
   }
 
   li {
