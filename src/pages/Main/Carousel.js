@@ -4,12 +4,12 @@ import './Carousel.scss';
 // 코드 참조: https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
 export const CarouselItem = ({ children, width }) => {
-  const [carouselImages, setCarouselImages] = useState([]);
-  useEffect(() => {
-    fetch('/data/carouselimgData.json')
-      .then(res => res.json())
-      .then(data => setCarouselImages(data));
-  }, []);
+  // const [carouselImages, setCarouselImages] = useState([]);
+  // useEffect(() => {
+  //   fetch('/data/carouselimgData.json')
+  //     .then(res => res.json())
+  //     .then(data => setCarouselImages(data));
+  // }, []);
 
   return (
     <div className="carouselItem" style={{ width: width }}>
