@@ -9,18 +9,38 @@ const Login = () => {
   // const [userId, setUserId] = useState(''); // 얘는 변수명이라 카멜케이스
   // const [userPw, setUserPw] = useState(''); // 얘는 변수명이라 카멜케이스
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     pw: '',
   });
 
   const [userBtn, setUserBtn] = useState(false);
 
-  const { id, pw } = inputValue;
+  const { email, pw } = inputValue;
 
   const navigate = useNavigate();
 
   const goToMain = () => {
-    navigate('/main');
+    navigate('/register');
+    // fetch(`http://172.20.10.3:8000/users/login`, {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: email,
+    //     password: pw,
+    //   }),
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       return res.json();
+    //     } else {
+    //       alert('Please check your email and password again!');
+    //     }
+    //   })
+    //   .then(result => {
+    //     localStorage.setItem('ACCESS_TOKEN', result.ACCESS_TOKEN);
+    //     localStorage.getItem('ACCESS_TOKEN');
+    //     // console.log(localStorage.getItem("ACCESS_TOKEN")); <-로컬스토리지에서키가 엑세스 토큰인 토큰(데이터) 빼오는법 확인
+    //     navigate('/register');
+    //   });
   };
 
   const handleInput = e => {
@@ -29,7 +49,7 @@ const Login = () => {
   };
 
   const activeLogin = () => {
-    if (id !== '' && id.includes('@') && pw.length >= 5) {
+    if (email !== '' && email.includes('@') && pw.length >= 5) {
       setUserBtn(true);
     } else {
       setUserBtn(false);
@@ -63,22 +83,13 @@ const Login = () => {
             onSubmit={event => {
               event.preventDefault();
               goToMain();
-              // fetch('API 주소', {
-              //   method: 'POST',
-              //   body: JSON.stringify({
-              //     email: id,
-              //     password: pw,
-              //   }),
-              // })
-              //   .then(response => response.json())
-              //   .then(result => console.log('결과: ', result));
             }}
           >
             <div className="loginInputForm">
               <span className="inp">
                 <input
-                  value={id}
-                  name="id"
+                  value={email}
+                  name="email"
                   type="text"
                   autoComplete="off"
                   className="inpText"
@@ -121,6 +132,10 @@ const Login = () => {
                 disabled={!userBtn}
                 id="btn"
                 className={userBtn ? 'loginBtn loginBtnBlue' : 'loginBtn'}
+                onClick={() => {
+                  goToMain();
+                  // alertName();
+                }}
               >
                 로그인
               </button>

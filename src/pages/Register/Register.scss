@@ -79,6 +79,7 @@
               border-radius: 6px;
               -webkit-appearance: none;
               appearance: none;
+              transition: background-color 5000s ease-in-out 0s;
             }
 
             .btnDel {
@@ -105,12 +106,19 @@
             border-radius: 6px;
             font-size: 18px;
             letter-spacing: -0.8px;
+            background-color: #f0f0f0;
+            border-style: none;
+            color: #c6c6c6;
+            cursor: not-allowed;
+
+            // &:disabled {}
           }
 
           .signUpBtnBlue {
             border: solid 1px #5c95f0;
             background-color: #5c95f0;
             color: #fff;
+            cursor: pointer;
           }
         }
 

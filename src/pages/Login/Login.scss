@@ -128,12 +128,14 @@
             background-color: #f0f0f0;
             border-style: none;
             color: #c6c6c6;
+            cursor: not-allowed;
           }
 
           .loginBtnBlue {
             border: solid 1px #5c95f0;
             background-color: #5c95f0;
             color: #fff;
+            cursor: pointer;
           }
         }
       }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './InputLogSign.scss';
 
-const InputLogSign = ({ input, handleInput }) => {
+const InputLogSign = ({ input, handleInput, onKeyUp }) => {
   const { name, value, placeholder, title, errortxt } = input;
 
   return (
@@ -10,10 +10,10 @@ const InputLogSign = ({ input, handleInput }) => {
         <input
           type="text"
           className="snpText"
-          maxLength="12"
           placeholder={placeholder}
           title={title}
           onChange={handleInput}
+          onKeyUp={onKeyUp}
           value={value}
           name={name}
         />

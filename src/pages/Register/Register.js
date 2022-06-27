@@ -13,8 +13,9 @@ const Register = () => {
     address: '',
     phone: '',
   });
+  const [userBtn, setUserBtn] = useState(false);
 
-  const { email, name, pw, pwCheck, address, phone } = inputValue;
+  const { email, name, pw, pwCheck, username, address, phone } = inputValue;
   const navigate = useNavigate();
 
   const handleInput = e => {
@@ -24,14 +25,15 @@ const Register = () => {
 
   const goToLogin = () => {
     navigate('/Login');
-    // fetch(`/signup`, {
+    // fetch(`http://172.20.10.3:8000/users/signup`, {
     //   method: 'POST',
     //   body: JSON.stringify({
     //     email: email,
     //     name: name,
     //     password: pw,
+    //     user_name: username,
     //     address: address,
-    //     phone_number: phone,
+    //     mobile_number: phone,
     //   }),
     // })
     //   .then(res => {
@@ -42,15 +44,85 @@ const Register = () => {
     //     }
     //   })
     //   .then(result => {
-    //     Navigator('/login');
+    //     navigate('/Login');
     //   });
   };
 
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,}$/;
   const passwordCondition = passwordRegex.test(inputValue.pw) && pw === pwCheck;
-  const emailCondition = email.includes('@') && email.includes('.');
+
+  const emailRegex = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/;
+  const emailCondition = emailRegex.test(inputValue.email);
+  // const emailCondition = email.includes('@') && email.includes('.');
 
   const isValid = passwordCondition && emailCondition;
+
+  const onKeyUp = () => {
+    if (isValid) {
+      setUserBtn(true);
+    } else {
+      setUserBtn(false);
+    }
+  };
+
+  const INPUT_DATA = [
+    {
+      id: 1,
+      placeholder: '이름 (한글 또는 영문)',
+      title: '이름 입력',
+      errortxt: '성함은 4~12자 한글 또는 영문을 사용하여 입력해주세요.',
+      value: name,
+      name: 'name',
+    },
+    {
+      id: 2,
+      placeholder: '이메일 (@를 포함한 이메일 형식)',
+      title: '이미엘 입력',
+      errortxt: '올바른 이메일 형식을 사용하여 입력해주세요.',
+      value: email,
+      name: 'email',
+    },
+    {
+      id: 3,
+      placeholder: '비밀번호 (영문 소문자, 숫자, 특수문자 조합 8-16자)',
+      title: '비밀번호 입력',
+      errortxt: '사용할 수 없는 비밀번호 입니다.',
+      value: pw,
+      name: 'pw',
+    },
+    {
+      id: 4,
+      placeholder: '비밀번호 확인',
+      title: '비밀번호 확인 입력',
+      errortxt: '비밀번호를 한번 더 입력해 주세요.',
+      value: pwCheck,
+      name: 'pwCheck',
+    },
+    {
+      id: 5,
+      placeholder: '닉네임 입력',
+      title: '닉네임 입력',
+      errortxt: '정확한 정보를 입력해주세요.',
+      value: username,
+      name: 'username',
+    },
+    {
+      id: 6,
+      placeholder: '핸드폰 번호 입력',
+      title: '핸드폰 번호',
+      errortxt: '정확한 정보를 입력해주세요.',
+      value: phone,
+      name: 'phone',
+    },
+    {
+      id: 7,
+      placeholder: '주소 입력',
+      title: '주소 입력',
+      errortxt: '정확한 주소를 입력해 주세요.',
+      value: address,
+      name: 'address',
+    },
+  ];
 
   return (
     <div className="signUpWrap">
@@ -73,12 +145,14 @@ const Register = () => {
               goToLogin();
             }}
           >
-            {INPUT_DATA.map(input => {
+            {INPUT_DATA.map((input, i) => {
+              //내가지은이름
               return (
                 <InputLogSign
                   key={input.id}
-                  input={input}
+                  input={input} //내가 지은 이름
                   handleInput={handleInput}
+                  onKeyUp={onKeyUp}
                 />
               );
             })}
@@ -86,12 +160,14 @@ const Register = () => {
             <div className="btnSubmit">
               <button
                 type="button"
-                className="signUpBtn signUpBtnBlue"
+                // className="signUpBtn"
+                className={userBtn ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
                 onClick={() => {
-                  // goSignUp();
+                  goToLogin();
                   // alertName();
                 }}
-                disabled={!isValid}
+                // disabled={!isValid}
+                disabled={!userBtn}
               >
                 동의하고 가입
               </button>
@@ -105,105 +181,3 @@ const Register = () => {
 };
 
 export default Register;
-
-// const INPUT_DATA = [
-//   {
-//     id: 1,
-//     placeholder: '이름 (한글 또는 영문)',
-//     title: '이름 입력',
-//     errortxt: '성함은 4~12자 한글 또는 영문을 사용하여 입력해주세요.',
-//     value: name,
-//     name: 'name',
-//   },
-//   {
-//     id: 2,
-//     placeholder: '이메일 (@를 포함한 이메일 형식)',
-//     title: '이미엘 입력',
-//     errortxt: '올바른 이메일 형식을 사용하여 입력해주세요.',
-//     value: email,
-//     name: 'email',
-//   },
-//   {
-//     id: 3,
-//     placeholder: '비밀번호 (영문 소문자, 숫자, 특수문자 조합 8-16자)',
-//     title: '비밀번호 입력',
-//     errortxt: '사용할 수 없는 비밀번호 입니다.',
-//     value: pw,
-//     name: 'pw',
-//   },
-//   {
-//     id: 4,
-//     placeholder: '비밀번호 확인',
-//     title: '비밀번호 확인 입력',
-//     errortxt: '비밀번호를 한번 더 입력해 주세요.',
-//     value: pwCheck,
-//     name: 'pwCheck',
-//   },
-//   {
-//     id: 5,
-//     placeholder: '핸드폰 번호 입력',
-//     title: '핸드폰 번호',
-//     errortxt: '정확한 정보를 입력해주세요.',
-//     value: phone,
-//     name: 'phone',
-//   },
-//   {
-//     id: 6,
-//     placeholder: '주소 입력',
-//     title: '주소 입력',
-//     errortxt: '정확한 주소를 입력해 주세요.',
-//     value: address,
-//     name: 'address',
-//   },
-// ];
-
-const INPUT_DATA = [
-  {
-    id: 1,
-    placeholder: '이름 (한글 또는 영문)',
-    title: '이름 입력',
-    errortxt: '성함은 4~12자 한글 또는 영문을 사용하여 입력해주세요.',
-    value: '',
-    name: 'name',
-  },
-  {
-    id: 2,
-    placeholder: '이메일 (@를 포함한 이메일 형식)',
-    title: '이미엘 입력',
-    errortxt: '올바른 이메일 형식을 사용하여 입력해주세요.',
-    value: '',
-    name: 'email',
-  },
-  {
-    id: 3,
-    placeholder: '비밀번호 (영문 소문자, 숫자, 특수문자 조합 8-16자)',
-    title: '비밀번호 입력',
-    errortxt: '사용할 수 없는 비밀번호 입니다.',
-    value: '',
-    name: 'pw',
-  },
-  {
-    id: 4,
-    placeholder: '비밀번호 확인',
-    title: '비밀번호 확인 입력',
-    errortxt: '비밀번호를 한번 더 입력해 주세요.',
-    value: '',
-    name: 'pwCheck',
-  },
-  {
-    id: 5,
-    placeholder: '핸드폰 번호 입력',
-    title: '핸드폰 번호',
-    errortxt: '정확한 정보를 입력해주세요.',
-    value: '',
-    name: 'phone',
-  },
-  {
-    id: 6,
-    placeholder: '주소 입력',
-    title: '주소 입력',
-    errortxt: '정확한 주소를 입력해 주세요.',
-    value: '',
-    name: 'address',
-  },
-];
