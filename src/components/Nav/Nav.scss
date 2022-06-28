@@ -1,0 +1,60 @@
+.navBar {
+  font-family: 'Arita', sans-serif;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 200px;
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+  border-bottom: 1px solid #d9d8d8;
+
+  .navLogo {
+    margin-left: 20px;
+    img {
+      width: 8rem;
+      height: 3rem;
+    }
+  }
+
+  .navIcons {
+    padding-right: 20px;
+    a {
+      border-style: none;
+      background-color: transparent;
+      padding: 0;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    span {
+      cursor: pointer;
+    }
+    .iconProfile {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: url('../../assets/images/profileIcon.png') 50% 50% no-repeat;
+      background-size: 100%;
+    }
+    .iconLocation {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: url('../../assets/images/locationIcon.png') 50% 50% no-repeat;
+      background-size: 100%;
+    }
+    .iconSearch {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-left: 20px;
+      background: url('../../assets/images/searchIcon.png') 50% 50% no-repeat;
+      background-size: 100%;
+      cursor: pointer;
+    }
+  }
+}
