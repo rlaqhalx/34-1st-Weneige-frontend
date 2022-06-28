@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Products from './Products';
 import SortingButton from './SortingButton';
 import Carousel, { CarouselItem } from './Carousel';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import './Main.scss';
 
 const Main = () => {
@@ -41,20 +43,7 @@ const Main = () => {
 
   return (
     <>
-      {/* nav제작 후 붙이기 */}
-      <div
-        className="navBar"
-        style={{
-          backgroundColor: 'yellow',
-          height: '100px',
-          position: 'fixed',
-          width: '100%',
-          top: '0',
-          zIndex: '101', // TODO: Nav에 추후 추가 필요
-        }}
-      >
-        nav
-      </div>
+      <Nav />
       <div className="main">
         <section className="slideSection">
           <div className="carouselSection">
@@ -104,16 +93,7 @@ const Main = () => {
           </div>
         </section>
       </div>
-      {/* Footer 제작 후 붙이기 */}
-      <div
-        style={{
-          backgroundColor: 'green',
-          height: '200px',
-          width: '100%',
-        }}
-      >
-        Footer
-      </div>
+      <Footer />
     </>
   );
 };
