@@ -9,6 +9,7 @@ button {
   position: relative;
   left: 900px;
   top: -650px;
+
   .tagWrapper {
     width: 330px;
     height: 26px;
@@ -104,22 +105,5 @@ button {
     width: 380px;
     height: 70px;
     justify-content: space-between;
-
-    #cartBtn {
-      width: 185px;
-      height: 50px;
-      background-color: white;
-      border: 0.25px solid #5f5f5f;
-      border-radius: 3px;
-    }
-
-    #purchaseBtn {
-      width: 185px;
-      height: 50px;
-      background-color: #7ba4db;
-      color: white;
-      border: none;
-      border-radius: 3px;
-    }
   }
 }

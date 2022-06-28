@@ -1,15 +1,43 @@
 [
   {
-    "tags": ["#나에게 맞는 톤 업", "#프리미엄 메이크업 베이스 1위"],
+    "id": 1,
     "kor_name": "스킨 베일 베이스_EX",
     "eng_name": "SKIN VEIL BASE_EX",
     "description": "바르기만 해도 자연스럽고 화사한 피부로 표현해주는 톤 코렉팅 메이크업 베이스",
-    "colors": ["40호 퓨어 바이올렛", "60호 민트 그린"],
+    "color": ["40호 퓨어 바이올렛", "60호 민트 그린"],
     "volume": "30ml",
-    "price": "39,000원",
-    "images": [
+    "price": 39000,
+    "image_url": [
       "../images/detail/purple_skin_veil_base.jpg",
-      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail02_1.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/06/23/220209_final_Skin-veil-base_thumbnail02_1.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail04.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "kor_name": "스킨 베일 베이스_EX",
+    "eng_name": "SKIN VEIL BASE_EX",
+    "description": "바르기만 해도 자연스럽고 화사한 피부로 표현해주는 톤 코렉팅 메이크업 베이스",
+    "color": ["40호 퓨어 바이올렛", "60호 민트 그린"],
+    "volume": "30ml",
+    "price": 39000,
+    "image_url": [
+      "../images/detail/purple_skin_veil_base.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/06/23/220209_final_Skin-veil-base_thumbnail02_1.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail04.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "kor_name": "스킨 베일 베이스_EX",
+    "eng_name": "SKIN VEIL BASE_EX",
+    "description": "바르기만 해도 자연스럽고 화사한 피부로 표현해주는 톤 코렉팅 메이크업 베이스",
+    "color": ["40호 퓨어 바이올렛", "60호 민트 그린"],
+    "volume": "30ml",
+    "price": 39000,
+    "image_url": [
+      "../images/detail/purple_skin_veil_base.jpg",
+      "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/06/23/220209_final_Skin-veil-base_thumbnail02_1.jpg",
       "https://www.laneige.com/kr/ko/makeup/__icsFiles/afieldfile/2022/02/10/220209_final_Skin-veil-base_thumbnail04.jpg"
     ]
   }

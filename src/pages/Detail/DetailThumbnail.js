@@ -20,7 +20,6 @@ const DetailThumbnail = ({ images }) => {
         })}
       </section>
       <img className="productThumbnail" src={imgSrc} alt="product" />
-      {/*<img className="productThumbnail" src={images[colorIdx]} alt="product" />*/}
     </>
   );
 };
