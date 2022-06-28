@@ -4,25 +4,29 @@
   height: 250px;
   bottom: 0;
   border-top: 1px solid #d8d8d8;
+
   .footerTop {
-    display: flex;
     position: relative;
+    display: flex;
     align-items: center;
-    max-width: 1180px;
     justify-content: space-between;
-    margin: 0 auto;
+    max-width: 1180px;
     height: 44px;
+    margin: 0 auto;
+
     .links {
       a {
         padding-right: 20px;
         text-decoration: none;
         color: black;
         font-weight: 200;
-      }
-      a:not(:first-child) {
-        margin-left: 10px;
+
+        &:not(:first-child) {
+          margin-left: 10px;
+        }
       }
     }
+
     .socialLinks {
       a:nth-child(odd) {
         padding: 0 15px;
@@ -32,22 +36,25 @@
 
   .footerBottom {
     position: relative;
-    padding-top: 1.25rem;
     width: 100%;
-    border-top: 1px solid #d8d8d8;
+    padding-top: 1.25rem;
     margin: 0 0;
+    border-top: 1px solid #d8d8d8;
   }
+
   .footerBottomWrap {
+    position: relative;
     max-width: 1180px;
     margin: 0 auto;
-    position: relative;
   }
 
   .infoWrap {
     margin-bottom: 35px;
+
     p:first-child {
       border-right: 1px solid #d8d8d8;
     }
+
     p:last-child {
       margin-left: 20px;
     }
@@ -67,6 +74,7 @@
     margin-bottom: 0;
     display: block;
     letter-spacing: 0.08rem;
+
     span {
       font-weight: bolder;
     }
