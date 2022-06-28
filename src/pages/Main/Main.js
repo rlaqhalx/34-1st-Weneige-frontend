@@ -16,6 +16,15 @@ const Main = () => {
       });
   }, []);
 
+  const [carouselData, setCarouselData] = useState([]);
+  useEffect(() => {
+    fetch('data/carouselimgData.json')
+      .then(res => res.json())
+      .then(data => {
+        setCarouselData(data);
+      });
+  }, []);
+
   const sortAscByLetter = () => {
     let listSortedByKoreanAlphabet = [...productList].sort((a, b) =>
       a.kor_name > b.kor_name ? 1 : -1
@@ -48,55 +57,19 @@ const Main = () => {
       </div>
       <div className="main">
         <section className="slideSection">
-          <Carousel>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              />
-              <div
-                style={{
-                  width: '100%',
-                  position: 'absolute',
-                  bottom: '0',
-                  left: '50%',
-                  color: 'white',
-                }}
-              >
-                멋있는 산
-              </div>
-            </CarouselItem>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
-              />
-            </CarouselItem>
-          </Carousel>
+          <div className="carouselSection">
+            <Carousel>
+              {carouselData.map(({ id, img, text }) => {
+                return (
+                  <CarouselItem key={id}>
+                    <img alt="" src={img} />
+                    {/* <div className={`carouselText ${id}`}>{text}</div> */}{' '}
+                    {/* TODO: 사진에 텍스트 넣는 부분 구현(필요시) */}
+                  </CarouselItem>
+                );
+              })}
+            </Carousel>
+          </div>
         </section>
         <section className="productSection">
           <div className="shelfFilter">
