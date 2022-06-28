@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Categories from './Categories';
-import SearchBar from './SearchBar';
+
 import './Nav.scss';
 
-const Nav = ({ productList }) => {
-  const [isShowSearchBar, setIsShowSearchBar] = useState(false);
-
+const Nav = () => {
   const navigate = useNavigate();
 
   const goToLogin = () => {
     // TODO: 로그인 상태 관련 조건식 구현 요망
     navigate('/login');
-  };
-
-  const showBar = () => {
-    setIsShowSearchBar(prev => !prev);
   };
 
   return (
@@ -39,10 +33,6 @@ const Nav = ({ productList }) => {
         <Link to="#">
           <div className="iconLocation" />
         </Link>
-        <span className="searchButton" onClick={showBar}>
-          <div className="iconSearch" />
-        </span>
-        {isShowSearchBar && <SearchBar productList={productList} />}
       </div>
     </nav>
   );
