@@ -1,7 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SearchBar.scss';
 
-const SearchBar = () => {
+const SearchBar = ({ productList, setProductList }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleSearchChange = e => {
+    setInputValue(e.target.value);
+  };
+
+  useEffect(() => {
+    setProductList(
+      productList.filter(item => {
+        return item.kor_name.includes(inputValue);
+      })
+    );
+  }, [inputValue]);
+
   return (
     <div className="searchPad">
       <div className="searchWrap">
@@ -12,6 +27,7 @@ const SearchBar = () => {
               type="search"
               placeholder="검색어를 입력해 주세요"
               className="searchInput"
+              onChange={handleSearchChange}
             />
           </div>
           <button className="searchButton">검색</button>

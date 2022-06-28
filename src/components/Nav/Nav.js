@@ -4,15 +4,20 @@ import Categories from './Categories';
 import SearchBar from './SearchBar';
 import './Nav.scss';
 
-const Nav = () => {
+const Nav = ({ productList }) => {
   const [isShowSearchBar, setIsShowSearchBar] = useState(false);
+
   const navigate = useNavigate();
+
   const goToLogin = () => {
+    // TODO: 로그인 상태 관련 조건식 구현 요망
     navigate('/login');
   };
+
   const showBar = () => {
     setIsShowSearchBar(prev => !prev);
   };
+
   return (
     <nav className="navBar">
       <div className="navLogo">
@@ -37,7 +42,7 @@ const Nav = () => {
         <span className="searchButton" onClick={showBar}>
           <div className="iconSearch" />
         </span>
-        {isShowSearchBar && <SearchBar />}
+        {isShowSearchBar && <SearchBar productList={productList} />}
       </div>
     </nav>
   );
