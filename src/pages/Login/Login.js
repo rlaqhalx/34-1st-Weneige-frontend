@@ -1,19 +1,17 @@
-import React from 'react';
-import './Login.scss';
+import React, { useState } from 'react';
 // import InputLogSign from '../../components/InputLogSign/InputLogSign';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
-  // const [userId, setUserId] = useState(''); // 얘는 변수명이라 카멜케이스
-  // const [userPw, setUserPw] = useState(''); // 얘는 변수명이라 카멜케이스
+  // const [userId, setUserId] = useState(''); //
+  // const [userPw, setUserPw] = useState(''); //
+
   const [inputValue, setInputValue] = useState({
     email: '',
     pw: '',
   });
-
-  const [userBtn, setUserBtn] = useState(false);
 
   const { email, pw } = inputValue;
 
@@ -37,7 +35,6 @@ const Login = () => {
     //   })
     //   .then(result => {
     //     localStorage.setItem('ACCESS_TOKEN', result.ACCESS_TOKEN);
-    //     localStorage.getItem('ACCESS_TOKEN');
     //     // console.log(localStorage.getItem("ACCESS_TOKEN")); <-로컬스토리지에서키가 엑세스 토큰인 토큰(데이터) 빼오는법 확인
     //     navigate('/register');
     //   });
@@ -48,13 +45,7 @@ const Login = () => {
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  const activeLogin = () => {
-    if (email !== '' && email.includes('@') && pw.length >= 5) {
-      setUserBtn(true);
-    } else {
-      setUserBtn(false);
-    }
-  };
+  const isInputValid = email !== '' && email.includes('@') && pw.length >= 5;
 
   return (
     <div className="login">
@@ -95,7 +86,6 @@ const Login = () => {
                   className="inpText"
                   placeholder="아이디 입력"
                   onChange={handleInput}
-                  onKeyUp={activeLogin}
                   title="아이디 입력"
                 />
                 <button type="button" className="btnDel">
@@ -113,7 +103,6 @@ const Login = () => {
                   className="inpText"
                   placeholder="비밀번호 입력 (영문, 숫자, 특수문자 조합)"
                   onChange={handleInput}
-                  onKeyUp={activeLogin}
                   title="비밀번호 입력"
                 />
                 <button type="button" className="btnDel">
@@ -129,9 +118,9 @@ const Login = () => {
             <div className="loginOpt">
               <button
                 type="button"
-                disabled={!userBtn}
+                disabled={!isInputValid}
                 id="btn"
-                className={userBtn ? 'loginBtn loginBtnBlue' : 'loginBtn'}
+                className={isInputValid ? 'loginBtn loginBtnBlue' : 'loginBtn'}
                 onClick={() => {
                   goToMain();
                   // alertName();

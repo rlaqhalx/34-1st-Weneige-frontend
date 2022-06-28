@@ -60,6 +60,8 @@
       margin-top: 40px;
 
       .joinForm {
+        border-bottom: 1px solid #dfdfdf;
+        padding-bottom: 25px;
         .signUpInputForm {
           margin-bottom: 15px;
 
@@ -121,14 +123,13 @@
             cursor: pointer;
           }
         }
-
-        .txtC {
-          margin: 15px 0;
-          text-align: center;
-          color: #898989;
-          letter-spacing: -0.7px;
-          line-height: 1.43;
-        }
+      }
+      .txtC {
+        margin: 15px 0;
+        text-align: center;
+        color: #898989;
+        letter-spacing: -0.7px;
+        line-height: 1.43;
       }
     }
   }

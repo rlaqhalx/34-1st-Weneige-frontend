@@ -1,7 +1,6 @@
-import React from 'react';
-import InputLogSign from '../../components/InputLogSign/InputLogSign';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import InputLogSign from '../../components/InputLogSign/InputLogSign';
 import './Register.scss';
 
 const Register = () => {
@@ -12,10 +11,11 @@ const Register = () => {
     pwCheck: '',
     address: '',
     phone: '',
+    username: '',
   });
-  const [userBtn, setUserBtn] = useState(false);
 
   const { email, name, pw, pwCheck, username, address, phone } = inputValue;
+
   const navigate = useNavigate();
 
   const handleInput = e => {
@@ -47,6 +47,15 @@ const Register = () => {
     //     navigate('/Login');
     //   });
   };
+  const alertName = () => {
+    if (
+      inputValue.name === '' ||
+      inputValue.address === '' ||
+      inputValue.phone === ''
+    ) {
+      alert('Must not be blank');
+    }
+  };
 
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,}$/;
   const passwordCondition = passwordRegex.test(inputValue.pw) && pw === pwCheck;
@@ -55,15 +64,12 @@ const Register = () => {
   const emailCondition = emailRegex.test(inputValue.email);
   // const emailCondition = email.includes('@') && email.includes('.');
 
-  const isValid = passwordCondition && emailCondition;
-
-  const onKeyUp = () => {
-    if (isValid) {
-      setUserBtn(true);
-    } else {
-      setUserBtn(false);
-    }
-  };
+  const isValid =
+    passwordCondition &&
+    emailCondition &&
+    inputValue.phone.length > 0 &&
+    inputValue.address.length > 0 &&
+    inputValue.username.length > 0;
 
   const INPUT_DATA = [
     {
@@ -145,35 +151,41 @@ const Register = () => {
               goToLogin();
             }}
           >
-            {INPUT_DATA.map((input, i) => {
-              //내가지은이름
-              return (
-                <InputLogSign
-                  key={input.id}
-                  input={input} //내가 지은 이름
-                  handleInput={handleInput}
-                  onKeyUp={onKeyUp}
-                />
-              );
-            })}
+            {INPUT_DATA.map(
+              ({ id, placeholder, title, errortxt, value, name }) => {
+                //내가지은이름
+                return (
+                  <InputLogSign
+                    key={id}
+                    id={id}
+                    placeholder={placeholder}
+                    title={title}
+                    errortxt={errortxt}
+                    value={value}
+                    name={name}
+                    handleInput={handleInput}
+                    isValid={isValid}
+                  />
+                );
+              }
+            )}
 
             <div className="btnSubmit">
               <button
                 type="button"
                 // className="signUpBtn"
-                className={userBtn ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
+                className={isValid ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
                 onClick={() => {
                   goToLogin();
-                  // alertName();
+                  alertName();
                 }}
-                // disabled={!isValid}
-                disabled={!userBtn}
+                disabled={!isValid}
               >
                 동의하고 가입
               </button>
             </div>
-            <p class="txtC">가입 필수 정보 및 약관을 모두 확인해주세요.</p>
           </form>
+          <p className="txtC">가입 필수 정보 및 약관을 모두 확인해주세요.</p>
         </div>
       </section>
     </div>
