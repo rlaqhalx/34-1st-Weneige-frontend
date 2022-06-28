@@ -1,8 +1,8 @@
 .searchPad {
   width: 100%;
-  position: fixed;
   top: 60px;
   right: 0;
+  margin-bottom: 50px;
   background-color: #f6f6f6;
 
   .searchWrap {
@@ -14,7 +14,7 @@
   .searchInput {
     position: relative;
     width: 100%;
-    padding-right: 0;
+    padding-right: 1.5em;
     border: none;
     background: none;
     transition: 0.2s;

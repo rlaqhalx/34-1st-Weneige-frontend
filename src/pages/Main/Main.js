@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Products from './Products';
 import SortingButton from './SortingButton';
+import SearchBar from './SearchBar';
 import Carousel, { CarouselItem } from './Carousel';
 import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
 import './Main.scss';
+import ProductList from './ProductList';
 
 const Main = () => {
   const [productList, setProductList] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
   useEffect(() => {
     fetch('data/productData.json')
       // TODO : 추후 백엔드와 통신할 때 아래 코드 사용할 것
@@ -41,6 +44,14 @@ const Main = () => {
     setProductList(listSortedByPrice);
   };
 
+  const updateItemInput = e => {
+    setInputValue(e.target.value);
+  };
+
+  const sortedItems = productList.filter(item => {
+    return item.kor_name.includes(inputValue);
+  });
+
   return (
     <>
       <Nav />
@@ -60,6 +71,7 @@ const Main = () => {
             </Carousel>
           </div>
         </section>
+        <SearchBar updateItemInput={updateItemInput} />
         <section className="productSection">
           <div className="shelfFilter">
             <div className="buttonContainer">
@@ -78,7 +90,7 @@ const Main = () => {
             <p>메이크업 16개 상품</p>
           </div>
           <div className="productsContainer">
-            {productList.map(({ product_id, image_url, kor_name, price }) => {
+            {/* {productList.map(({ product_id, image_url, kor_name, price }) => {
               return (
                 <Products
                   key={product_id}
@@ -88,8 +100,8 @@ const Main = () => {
                   price={price}
                 />
               );
-            })}
-            {/* <Products productData={productData} /> */}
+            })} */}
+            <ProductList productList={sortedItems} />
           </div>
         </section>
       </div>

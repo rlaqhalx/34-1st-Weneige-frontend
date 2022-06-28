@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './SearchBar.scss';
 
-const SearchBar = () => {
+const SearchBar = ({ updateItemInput }) => {
   return (
     <div className="searchPad">
       <div className="searchWrap">
@@ -12,9 +12,17 @@ const SearchBar = () => {
               type="search"
               placeholder="검색어를 입력해 주세요"
               className="searchInput"
+              onChange={updateItemInput}
             />
           </div>
-          <button className="searchButton">검색</button>
+          <button
+            className="searchButton"
+            onClick={e => {
+              e.preventDefault();
+            }}
+          >
+            검색
+          </button>
         </form>
         <div className="searchRecommends">
           <span>추천 검색어</span>
