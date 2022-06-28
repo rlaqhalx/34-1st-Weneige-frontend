@@ -1,0 +1,38 @@
+.productList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 2rem;
+
+  &:not(:nth-child(4n)) {
+    padding-right: 10px;
+  }
+
+  .productItemThumb {
+    width: 100%;
+    height: auto;
+    img {
+      width: 100%;
+      height: 400px;
+    }
+  }
+  .productItemHashWrap {
+    font-size: 0.8rem;
+    color: #858485;
+    margin-bottom: 3px;
+  }
+  a {
+    cursor: url('https://www.laneige.com/kr/ko/assets/image/a/pointer.png') 0 0,
+      auto;
+  }
+  .productPrice {
+    text-align: center;
+  }
+}
+
+.productItemName {
+  font-size: 0.9rem;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
