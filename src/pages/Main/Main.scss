@@ -1,8 +1,7 @@
 .main {
   .slideSection {
     width: 65%;
-    height: 300px;
-    border: 1px solid red;
+    height: auto;
     margin: 100px auto;
   }
 
@@ -46,7 +45,6 @@
   }
 
   .alignButton {
-    position: relative;
     button {
       cursor: pointer;
     }

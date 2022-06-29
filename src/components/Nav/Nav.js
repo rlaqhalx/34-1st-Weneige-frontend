@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Categories from './Categories';
-import SearchBar from './SearchBar';
 import './Nav.scss';
 
 const Nav = () => {
-  const [isShowSearchBar, setIsShowSearchBar] = useState(false);
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
   };
-  const showBar = () => {
-    setIsShowSearchBar(prev => !prev);
-  };
+
   return (
     <nav className="navBar">
       <div className="navLogo">
@@ -34,10 +30,6 @@ const Nav = () => {
         <Link to="#">
           <div className="iconLocation" />
         </Link>
-        <span className="searchButton" onClick={showBar}>
-          <div className="iconSearch" />
-        </span>
-        {isShowSearchBar && <SearchBar />}
       </div>
     </nav>
   );
