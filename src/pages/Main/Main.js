@@ -4,17 +4,17 @@ import SearchBar from './SearchBar';
 import Carousel, { CarouselItem } from './Carousel';
 import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
+import ProductItem from './ProductItem';
 import './Main.scss';
-import ProductList from './ProductList';
 
 const Main = () => {
   const [productList, setProductList] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [searchInputValue, setSearchInputValue] = useState('');
 
   useEffect(() => {
     fetch('data/productData.json')
       // TODO : 추후 백엔드와 통신할 때 아래 코드 사용할 것
-      // fetch('http://172.20.10.6:8000/products/product_list')
+      // fetch('http://172.20.10.6:8000/products')
       .then(res => res.json())
       .then(data => {
         setProductList(data.product_detail);
@@ -45,11 +45,11 @@ const Main = () => {
   };
 
   const updateItemInput = e => {
-    setInputValue(e.target.value);
+    setSearchInputValue(e.target.value);
   };
 
   const sortedItems = productList.filter(item => {
-    return item.kor_name.includes(inputValue);
+    return item.kor_name.includes(searchInputValue);
   });
 
   return (
@@ -63,8 +63,6 @@ const Main = () => {
                 return (
                   <CarouselItem key={id}>
                     <img alt="" src={img} />
-                    {/* <div className={`carouselText ${id}`}>{text}</div> */}{' '}
-                    {/* TODO: 사진에 텍스트 넣는 부분 구현(필요시) */}
                   </CarouselItem>
                 );
               })}
@@ -101,7 +99,7 @@ const Main = () => {
                 />
               );
             })} */}
-            <ProductList productList={sortedItems} />
+            <ProductItem productList={sortedItems} />
           </div>
         </section>
       </div>

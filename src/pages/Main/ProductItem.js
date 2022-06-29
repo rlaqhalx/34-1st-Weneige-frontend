@@ -1,7 +1,7 @@
 import Products from './Products';
 import './Products.scss';
 
-const ProductList = ({
+const ProductItem = ({
   productList,
   product_id,
   image_url,
@@ -25,4 +25,4 @@ const ProductList = ({
   );
 };
 
-export default ProductList;
+export default ProductItem;

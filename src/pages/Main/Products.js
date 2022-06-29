@@ -9,7 +9,7 @@ const Products = ({ product_id, image_url, kor_name, price }) => {
   };
 
   return (
-    <div className="productList" onClick={goToDetail}>
+    <div className="productItem" onClick={goToDetail}>
       <Link to="#" className="productItemLink">
         <div className="productItemThumb">
           <img src={image_url[0]} alt="thumb1" />
