@@ -9,7 +9,11 @@ const Nav = () => {
 
   const goToLogin = () => {
     // TODO: 로그인 상태 관련 조건식 구현 요망
-    navigate('/login');
+    if (!localStorage.getItem('Authorization')) {
+      navigate('/login');
+    } else {
+      alert('이미 로그인이 되어있습니다.');
+    }
   };
 
   return (
@@ -27,12 +31,11 @@ const Nav = () => {
       </ul>
       <div className="navIcons">
         <span className="loginButton" onClick={goToLogin}>
-          {/* TODO: 추후 Login페이지 이동에 관련 로그인 되어있을 때와 아닐때 로직 작성 요망 */}
           <div className="iconProfile" />
         </span>
-        <Link to="#">
+        <span className="locationButton">
           <div className="iconLocation" />
-        </Link>
+        </span>
       </div>
     </nav>
   );
