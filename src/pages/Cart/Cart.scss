@@ -29,16 +29,6 @@
         margin-bottom: 20px;
         background-color: white;
 
-        .label {
-          @include flexCenter;
-
-          .woo {
-            width: 16px;
-            height: 16px;
-            background-color: black;
-          }
-        }
-
         .allDeleteBtn {
           position: absolute;
           right: 20px;

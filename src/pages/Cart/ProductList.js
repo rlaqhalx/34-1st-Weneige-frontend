@@ -6,7 +6,7 @@ const ProductList = ({ order, handleCount, deleteProduct }) => {
     order;
 
   const addCount = () => {
-    if (quantity < 1000) {
+    if (quantity < 99) {
       fetch('http://10.58.2.12:8000/carts', {
         method: 'POST',
         headers: {

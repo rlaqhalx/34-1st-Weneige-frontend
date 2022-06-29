@@ -7,7 +7,6 @@ import './Cart.scss';
 
 const Cart = () => {
   const [orderList, setOrderList] = useState([]);
-  const [checkedItem, setCheckedItem] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -25,10 +24,6 @@ const Cart = () => {
       });
   }, []);
 
-  const handleOnChange = () => {
-    setCheckedItem(!checkedItem);
-  };
-
   const order = () => {
     if (window.confirm('주문하시겠습니까?')) {
       alert('주문이 완료 되었습니다');
@@ -39,17 +34,6 @@ const Cart = () => {
 
   const deleteAll = () => {
     if (orderList.length !== 0) {
-      // fetch(
-      //   `http://10.58.2.12:8000/carts?product_option_id=${orderList.product_option_id}`,
-      //   {
-      //     method: 'DELETE',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       Authorization:
-      //         'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
-      //     },
-      //   }
-      // );
       if (window.confirm('삭제 하시겠습니까??')) {
         setOrderList([]);
       }
@@ -87,16 +71,6 @@ const Cart = () => {
           <div className="cartMain">
             <div className="cartName">장바구니</div>
             <div className="allCheckBox">
-              <div className="label">
-                <input
-                  type="checkbox"
-                  className="woo"
-                  checked={checkedItem}
-                  onChange={handleOnChange}
-                />
-                <p>전체선택</p>
-              </div>
-
               <button className="allDeleteBtn" onClick={deleteAll}>
                 전체삭제
               </button>
