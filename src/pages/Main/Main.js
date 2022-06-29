@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import SortingButton from './SortingButton';
-import SearchBar from './SearchBar';
-import Carousel, { CarouselItem } from './Carousel';
 import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
+import SortingButton from './SortingButton';
+import SearchBar from './SearchBar';
+import Carousel from './Carousel';
 import ProductItem from './ProductItem';
 import './Main.scss';
 
 const Main = () => {
-  const [productList, setProductList] = useState([]);
+  const [productData, setProductData] = useState([]);
   const [searchInputValue, setSearchInputValue] = useState('');
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Main = () => {
       // fetch('http://172.20.10.6:8000/products')
       .then(res => res.json())
       .then(data => {
-        setProductList(data.product_detail);
+        setProductData(data.product_detail);
       });
   }, []);
 
@@ -31,24 +31,24 @@ const Main = () => {
   }, []);
 
   const sortAscByLetter = () => {
-    let listSortedByKoreanAlphabet = [...productList].sort((a, b) =>
+    let listSortedByKoreanAlphabet = [...productData].sort((a, b) =>
       a.kor_name > b.kor_name ? 1 : -1
     );
-    setProductList(listSortedByKoreanAlphabet);
+    setProductData(listSortedByKoreanAlphabet);
   };
 
   const sortDescByPrice = () => {
-    let listSortedByPrice = [...productList].sort((a, b) =>
+    let listSortedByPrice = [...productData].sort((a, b) =>
       b.price > a.price ? 1 : -1
     );
-    setProductList(listSortedByPrice);
+    setProductData(listSortedByPrice);
   };
 
   const updateItemInput = e => {
     setSearchInputValue(e.target.value);
   };
 
-  const sortedItems = productList.filter(item => {
+  const sortedItems = productData.filter(item => {
     return item.kor_name.includes(searchInputValue);
   });
 
@@ -58,15 +58,7 @@ const Main = () => {
       <div className="main">
         <section className="slideSection">
           <div className="carouselSection">
-            <Carousel>
-              {carouselData.map(({ id, img, text }) => {
-                return (
-                  <CarouselItem key={id}>
-                    <img alt="" src={img} />
-                  </CarouselItem>
-                );
-              })}
-            </Carousel>
+            <Carousel carouselData={carouselData} />
           </div>
         </section>
         <SearchBar updateItemInput={updateItemInput} />
@@ -88,18 +80,7 @@ const Main = () => {
             <p>메이크업 16개 상품</p>
           </div>
           <div className="productsContainer">
-            {/* {productList.map(({ product_id, image_url, kor_name, price }) => {
-              return (
-                <Products
-                  key={product_id}
-                  product_id={product_id}
-                  image_url={image_url}
-                  kor_name={kor_name}
-                  price={price}
-                />
-              );
-            })} */}
-            <ProductItem productList={sortedItems} />
+            <ProductItem productData={sortedItems} />
           </div>
         </section>
       </div>

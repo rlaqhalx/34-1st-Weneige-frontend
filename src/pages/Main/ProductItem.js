@@ -1,16 +1,10 @@
 import Products from './Products';
 import './Products.scss';
 
-const ProductItem = ({
-  productList,
-  product_id,
-  image_url,
-  kor_name,
-  price,
-}) => {
+const ProductItem = ({ productData }) => {
   return (
     <>
-      {productList.map(({ product_id, image_url, kor_name, price }) => {
+      {productData.map(({ product_id, image_url, kor_name, price }) => {
         return (
           <Products
             key={product_id}

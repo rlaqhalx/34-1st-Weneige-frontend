@@ -3,18 +3,15 @@ import './Carousel.scss';
 
 // 코드 참조: https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
-export const CarouselItem = ({ children }) => {
-  return <div className="carouselItem">{children}</div>;
-};
-
-const Carousel = ({ children }) => {
+const Carousel = ({ carouselData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const updateIndex = newIndex => {
+    let count = carouselData.length;
     if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
+      newIndex = count - 1;
+    } else if (newIndex >= count) {
       newIndex = 0;
     }
 
@@ -45,8 +42,12 @@ const Carousel = ({ children }) => {
         className="inner"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
-        {React.Children.map(children, (child, index) => {
-          return React.cloneElement(child, { width: '100%' });
+        {carouselData.map(({ id, img, alt }) => {
+          return (
+            <div className="carouselItem" key={id}>
+              <img alt={alt} src={img} />
+            </div>
+          );
         })}
       </div>
       <div className="indicators">
@@ -58,9 +59,10 @@ const Carousel = ({ children }) => {
         >
           &lt;
         </button>
-        {React.Children.map(children, (child, index) => {
+        {carouselData.map((el, index) => {
           return (
             <button
+              key={index}
               className={`choose${index === activeIndex ? ' active' : ''}`}
               onClick={() => {
                 updateIndex(index);
