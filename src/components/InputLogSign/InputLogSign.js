@@ -5,7 +5,7 @@ const InputLogSign = ({ input, handleInput, isValid }) => {
   const { name, value, placeholder, title, errortxt, type } = input;
   const [isUnValid, setIsUnValid] = useState(false);
 
-  const validHandel = () => {
+  const validHandle = () => {
     // isValid ? setIsUnValid(false) : setIsUnValid(true);
     if (isValid) {
       setIsUnValid(false);
@@ -25,7 +25,7 @@ const InputLogSign = ({ input, handleInput, isValid }) => {
           placeholder={placeholder}
           title={title}
           onChange={handleInput}
-          onKeyUp={validHandel}
+          onKeyUp={validHandle}
           value={value}
           name={name}
         />

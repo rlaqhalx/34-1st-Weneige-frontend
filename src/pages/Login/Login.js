@@ -26,26 +26,26 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    navigate('/register');
-    // fetch(`http://172.20.10.3:8000/users/login`, {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     email: email,
-    //     password: pw,
-    //   }),
-    // })
-    //   .then(res => {
-    //     if (res.ok) {
-    //       return res.json();
-    //     } else {
-    //       alert('Please check your email and password again!');
-    //     }
-    //   })
-    //   .then(result => {
-    //     localStorage.setItem('ACCESS_TOKEN', result.ACCESS_TOKEN);
-    //     // console.log(localStorage.getItem("ACCESS_TOKEN")); <-로컬스토리지에서키가 엑세스 토큰인 토큰(데이터) 빼오는법 확인
-    //     navigate('/register');
-    //   });
+    // navigate('/register');
+    fetch(`http://172.20.10.3:8000/users/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: pw,
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert('Please check your email and password again!');
+        }
+      })
+      .then(result => {
+        localStorage.setItem('Authorization', result.ACCESS_TOKEN);
+        // console.log(localStorage.getItem("ACCESS_TOKEN")); <-로컬스토리지에서키가 엑세스 토큰인 토큰(데이터) 빼오는법 확인
+        navigate('/register');
+      });
   };
 
   const handleInput = e => {
