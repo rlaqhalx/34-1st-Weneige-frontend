@@ -33,7 +33,11 @@ const Nav = () => {
         </span>
         <span className="locationButton">
           <div className="iconLocation" />
+<<<<<<< HEAD
         </span>
+=======
+        </Link>
+>>>>>>> master
       </div>
     </nav>
   );

@@ -1,49 +1,67 @@
 import React, { useEffect, useState } from 'react';
-import Products from './Products';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import SortingButton from './SortingButton';
+import SearchBar from './SearchBar';
+import Carousel from './Carousel';
+import ProductItem from './ProductItem';
 import './Main.scss';
 
 const Main = () => {
-  const [productList, setProductList] = useState([]);
+  const [productData, setProductData] = useState([]);
+  const [searchInputValue, setSearchInputValue] = useState('');
+
   useEffect(() => {
     fetch('data/productData.json')
+      // TODO : 추후 백엔드와 통신할 때 아래 코드 사용할 것
+      // fetch('http://172.20.10.6:8000/products')
       .then(res => res.json())
       .then(data => {
-        setProductList(data);
+        setProductData(data.product_detail);
+      });
+  }, []);
+
+  const [carouselData, setCarouselData] = useState([]);
+  useEffect(() => {
+    fetch('data/carouselimgData.json')
+      .then(res => res.json())
+      .then(data => {
+        setCarouselData(data);
       });
   }, []);
 
   const sortAscByLetter = () => {
-    let listSortedByKoreanAlphabet = [...productList].sort((a, b) =>
-      a.title > b.title ? 1 : -1
+    let listSortedByKoreanAlphabet = [...productData].sort((a, b) =>
+      a.kor_name > b.kor_name ? 1 : -1
     );
-    setProductList(listSortedByKoreanAlphabet);
+    setProductData(listSortedByKoreanAlphabet);
   };
 
   const sortDescByPrice = () => {
-    let listSortedByPrice = [...productList].sort((a, b) =>
+    let listSortedByPrice = [...productData].sort((a, b) =>
       b.price > a.price ? 1 : -1
     );
-    setProductList(listSortedByPrice);
+    setProductData(listSortedByPrice);
   };
+
+  const updateItemInput = e => {
+    setSearchInputValue(e.target.value);
+  };
+
+  const sortedItems = productData.filter(item => {
+    return item.kor_name.includes(searchInputValue);
+  });
+
   return (
     <>
-      {/* nav제작 후 붙이기 */}
-      <div
-        className="navBar"
-        style={{
-          backgroundColor: 'yellow',
-          height: '100px',
-          position: 'fixed',
-          width: '100%',
-          top: '0',
-          zIndex: '101', // TODO: Nav에 추후 추가 필요
-        }}
-      >
-        nav
-      </div>
+      <Nav />
       <div className="main">
-        <section className="slideSection">슬라이드 섹션</section>
+        <section className="slideSection">
+          <div className="carouselSection">
+            <Carousel carouselData={carouselData} />
+          </div>
+        </section>
+        <SearchBar updateItemInput={updateItemInput} />
         <section className="productSection">
           <div className="shelfFilter">
             <div className="buttonContainer">
@@ -62,34 +80,11 @@ const Main = () => {
             <p>메이크업 16개 상품</p>
           </div>
           <div className="productsContainer">
-            {productList.map(
-              ({ id, img, title, price, hashtxt1, hashtxt2 }) => {
-                return (
-                  <Products
-                    key={id}
-                    img={img}
-                    title={title}
-                    price={price}
-                    hashtxt1={hashtxt1}
-                    hashtxt2={hashtxt2}
-                  />
-                );
-              }
-            )}
-            {/* <Products productData={productData} /> */}
+            <ProductItem productData={sortedItems} />
           </div>
         </section>
       </div>
-      {/* Footer 제작 후 붙이기 */}
-      <div
-        style={{
-          backgroundColor: 'green',
-          height: '200px',
-          width: '100%',
-        }}
-      >
-        Footer
-      </div>
+      <Footer />
     </>
   );
 };
