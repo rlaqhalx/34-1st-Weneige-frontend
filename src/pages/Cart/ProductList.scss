@@ -1,4 +1,4 @@
-.productList {
+.productLists {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -13,6 +13,7 @@
     display: flex;
     position: relative;
     align-items: center;
+    padding-bottom: 20px;
 
     .productCheckBox {
       position: absolute;
@@ -70,27 +71,39 @@
   .productOption {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
+    position: relative;
+    padding: 30px 10px;
     border: 1px solid rgb(0, 0, 0, 0.1);
+
+    .productColor {
+      position: absolute;
+      left: 25px;
+    }
 
     .count {
       display: flex;
+      position: absolute;
+      left: 43%;
 
       button {
-        border: 0;
+        border: 1px solid rgb(0, 0, 0, 0.1);
         background-color: white;
+        width: 30px;
+        height: 30px;
       }
 
-      .quanttshin {
-        border: 0;
+      .productQuantity {
+        border: 1px solid rgb(0, 0, 0, 0.1);
         width: 30px;
+        height: 30px;
         text-align: center;
       }
     }
 
     .price {
       display: flex;
+      position: absolute;
+      right: 25px;
     }
   }
 }

@@ -1,56 +1,101 @@
 import React from 'react';
 import './ProductList.scss';
 
-const ProductList = ({
-  order,
-  orderList,
-  setOrderList,
-  i,
-  onChangeProps,
-  // deleteProduct,
-  id,
-}) => {
-  const { kor_name, price, color, quantity, image_url, product_options_id } =
+const ProductList = ({ order, handleCount, deleteProduct }) => {
+  const { kor_name, price, color, quantity, image_url, product_option_id } =
     order;
-  const deleteProduct = () => {
-    let copy = [...orderList];
-    copy.splice(i, 1);
-    setOrderList(copy);
-  };
 
-  const increaseHandler = () => {
-    if (quantity < 10) {
-      onChangeProps(product_options_id, 'quantity', quantity + 1);
+  const addCount = () => {
+    if (quantity < 1000) {
+      fetch('http://10.58.2.12:8000/carts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        },
+        body: JSON.stringify([
+          {
+            product_option_id: product_option_id,
+            quantity: 1,
+          },
+        ]),
+      }).then(res => {
+        if (res.ok) {
+          handleCount(product_option_id, 'quantity', quantity + 1);
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      });
     } else {
       alert('구매가능한 수량 초과 입니다');
     }
   };
 
-  const decreaseHandler = () => {
+  const subtractCount = () => {
     if (quantity > 1) {
-      onChangeProps(product_options_id, 'quantity', quantity - 1);
+      fetch('http://10.58.2.12:8000/carts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        },
+        body: JSON.stringify([
+          {
+            product_option_id: product_option_id,
+            quantity: -1,
+          },
+        ]),
+      }).then(res => {
+        if (res.ok) {
+          handleCount(product_option_id, 'quantity', quantity - 1);
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      });
     } else {
-      deleteProduct();
+      alert('최소 주문 수량은 1개 입니다');
     }
   };
 
   const won = (price * quantity).toLocaleString();
 
   return (
-    <div className="productList">
+    <div className="productLists">
       <div className="productDetail">
         <img src={image_url} alt="skin" className="productImg" />
         <p className="productName">{kor_name}</p>
-        <button className="deleteBtn" onClick={deleteProduct}>
+        <button
+          className="deleteBtn"
+          onClick={() => {
+            deleteProduct();
+            fetch(
+              `http://10.58.2.12:8000/carts?product_option_id=${product_option_id}`,
+              {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization:
+                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+                },
+              }
+            );
+          }}
+        >
           닫기
         </button>
       </div>
       <div className="productOption">
-        <p>{color}</p>
+        <p className="productColor">{color}</p>
         <div className="count">
-          <button onClick={decreaseHandler}>-</button>
-          <input className="quanttshin" value={quantity} />
-          <button onClick={increaseHandler}>+</button>
+          <button onClick={subtractCount}>-</button>
+          <input
+            className="productQuantity"
+            value={quantity}
+            onChange={e => {}}
+          />
+          <button onClick={addCount}>+</button>
         </div>
         <div className="price">
           <div className="fixedPrice">{won}원</div>

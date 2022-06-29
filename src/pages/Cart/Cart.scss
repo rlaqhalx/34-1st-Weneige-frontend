@@ -2,19 +2,19 @@
   display: flex;
   align-items: center;
 }
-// body {
-//   background-color: #f2f2f2;
-// }
+
 .cart {
   background-color: #f2f2f2;
-
+  margin: 50px 0;
   .cartWrap {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+
     .cartMain {
       max-width: 700px;
       margin: 0 auto;
+
       .cartName {
         padding: 46px 0 23px 0;
         font-size: 50px;
@@ -23,6 +23,7 @@
       .allCheckBox {
         @include flexCenter;
         justify-content: space-between;
+        position: relative;
         border: 1px solid #f2f2f2;
         padding: 20px;
         margin-bottom: 20px;
@@ -36,6 +37,15 @@
             height: 16px;
             background-color: black;
           }
+        }
+
+        .allDeleteBtn {
+          position: absolute;
+          right: 20px;
+          width: 80px;
+          height: 30px;
+          border: 1px solid rgb(0, 0, 0, 0.4);
+          background-color: #f8f8f8;
         }
       }
 
@@ -65,6 +75,7 @@
           align-items: center;
         }
       }
+
       .addressAndName {
         @include flexCenter;
         padding-left: 20px;
@@ -74,6 +85,7 @@
           padding: 20px;
         }
       }
+
       .order {
         @include flexCenter;
         position: relative;
@@ -83,13 +95,16 @@
 
         p {
           color: #7ba4db;
+          font-weight: bold;
         }
 
         .orderBtn {
           position: absolute;
           right: 20px;
+          width: 293px;
+          height: 45px;
           background-color: #7ba4db;
-          border-color: #7ba4db;
+          border: 1px solid #7ba4db;
           color: white;
         }
       }
