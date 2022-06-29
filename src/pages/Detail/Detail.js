@@ -32,7 +32,7 @@ const Detail = () => {
   if (product.length === 0) return <>loading...</>;
 
   return (
-    <>
+    <div className="detail">
       <DetailThumbnail images={product[4].product_detail.image_url} />
 
       <DetailTitle
@@ -75,7 +75,7 @@ const Detail = () => {
           />
         )}
       </section>
-    </>
+    </div>
   );
 };
 
