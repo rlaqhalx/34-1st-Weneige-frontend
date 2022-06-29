@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import InputLogSign from '../../components/InputLogSign/InputLogSign';
 import './Register.scss';
 
@@ -47,15 +48,6 @@ const Register = () => {
     //     navigate('/Login');
     //   });
   };
-  const alertName = () => {
-    if (
-      inputValue.name === '' ||
-      inputValue.address === '' ||
-      inputValue.phone === ''
-    ) {
-      alert('Must not be blank');
-    }
-  };
 
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,}$/;
   const passwordCondition = passwordRegex.test(inputValue.pw) && pw === pwCheck;
@@ -76,9 +68,10 @@ const Register = () => {
       id: 1,
       placeholder: '이름 (한글 또는 영문)',
       title: '이름 입력',
-      errortxt: '성함은 4~12자 한글 또는 영문을 사용하여 입력해주세요.',
+      errortxt: '성함은 한글 또는 영문을 사용하여 입력해주세요.',
       value: name,
       name: 'name',
+      type: 'text',
     },
     {
       id: 2,
@@ -87,14 +80,16 @@ const Register = () => {
       errortxt: '올바른 이메일 형식을 사용하여 입력해주세요.',
       value: email,
       name: 'email',
+      type: 'text',
     },
     {
       id: 3,
       placeholder: '비밀번호 (영문 소문자, 숫자, 특수문자 조합 8-16자)',
       title: '비밀번호 입력',
-      errortxt: '사용할 수 없는 비밀번호 입니다.',
+      errortxt: '올바른 비밀번호 형식을 사용하여 입력해주세요.',
       value: pw,
       name: 'pw',
+      type: 'password',
     },
     {
       id: 4,
@@ -103,6 +98,7 @@ const Register = () => {
       errortxt: '비밀번호를 한번 더 입력해 주세요.',
       value: pwCheck,
       name: 'pwCheck',
+      type: 'password',
     },
     {
       id: 5,
@@ -111,14 +107,16 @@ const Register = () => {
       errortxt: '정확한 정보를 입력해주세요.',
       value: username,
       name: 'username',
+      type: 'text',
     },
     {
       id: 6,
       placeholder: '핸드폰 번호 입력',
       title: '핸드폰 번호',
-      errortxt: '정확한 정보를 입력해주세요.',
+      errortxt: '숫자만 입력해주세요.',
       value: phone,
       name: 'phone',
+      type: 'number',
     },
     {
       id: 7,
@@ -127,6 +125,7 @@ const Register = () => {
       errortxt: '정확한 주소를 입력해 주세요.',
       value: address,
       name: 'address',
+      type: 'text',
     },
   ];
 
@@ -136,7 +135,9 @@ const Register = () => {
         <div className="signUpHederBox">
           <div className="signUpHederInner">
             <h1 className="signUpPageTitle">정보입력 및 약관동의</h1>
-            <button type="button" className="signUpClose" />
+            <Link to="/login">
+              <button type="button" className="signUpClose" />
+            </Link>
           </div>
         </div>
       </header>
@@ -151,24 +152,17 @@ const Register = () => {
               goToLogin();
             }}
           >
-            {INPUT_DATA.map(
-              ({ id, placeholder, title, errortxt, value, name }) => {
-                //내가지은이름
-                return (
-                  <InputLogSign
-                    key={id}
-                    id={id}
-                    placeholder={placeholder}
-                    title={title}
-                    errortxt={errortxt}
-                    value={value}
-                    name={name}
-                    handleInput={handleInput}
-                    isValid={isValid}
-                  />
-                );
-              }
-            )}
+            {INPUT_DATA.map((input, i) => {
+              //내가지은이름
+              return (
+                <InputLogSign
+                  key={input.id}
+                  input={input} //내가 지은 이름
+                  handleInput={handleInput}
+                  isValid={isValid}
+                />
+              );
+            })}
 
             <div className="btnSubmit">
               <button
@@ -177,7 +171,7 @@ const Register = () => {
                 className={isValid ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
                 onClick={() => {
                   goToLogin();
-                  alertName();
+                  // alertName();
                 }}
                 disabled={!isValid}
               >

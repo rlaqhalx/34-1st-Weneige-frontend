@@ -17,7 +17,11 @@
       -webkit-appearance: none;
       appearance: none;
     }
-
+    .snpText::-webkit-outer-spin-button,
+    .snpText::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
     .btnDel {
       display: none;
     }

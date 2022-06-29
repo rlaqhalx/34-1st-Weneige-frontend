@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
-// import InputLogSign from '../../components/InputLogSign/InputLogSign';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 
 const Login = () => {
-  // const [userId, setUserId] = useState(''); //
-  // const [userPw, setUserPw] = useState(''); //
-
-  const [inputValue, setInputValue] = useState({
+  const [loginInputValue, setInputValue] = useState({
     email: '',
     pw: '',
   });
 
-  const { email, pw } = inputValue;
+  const { email, pw } = loginInputValue;
 
   const navigate = useNavigate();
+
+  const [inputUnValid, setInputUnValid] = useState(false);
+
+  const validInputHandel = () => {
+    if (isInputValid) {
+      setInputUnValid(false);
+    } else if (email.length < 1 && pw.length < 1) {
+      setInputUnValid(true);
+    } else {
+      setInputUnValid(false);
+    }
+  };
 
   const goToMain = () => {
     navigate('/register');
@@ -42,7 +50,7 @@ const Login = () => {
 
   const handleInput = e => {
     const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
+    setInputValue({ ...loginInputValue, [name]: value });
   };
 
   const isInputValid = email !== '' && email.includes('@') && pw.length >= 5;
@@ -53,7 +61,9 @@ const Login = () => {
         <div className="loginHeaderBox">
           <div className="loginHeaderInner">
             <h1 className="loginPageTitle">로그인</h1>
-            <button className="loginClose" />
+            <Link to="/register">
+              <button className="loginClose" />
+            </Link>
           </div>
         </div>
       </header>
@@ -84,8 +94,9 @@ const Login = () => {
                   type="text"
                   autoComplete="off"
                   className="inpText"
-                  placeholder="아이디 입력"
+                  placeholder="이메일 (@를 포함한 이메일 형식)"
                   onChange={handleInput}
+                  onKeyUp={validInputHandel}
                   title="아이디 입력"
                 />
                 <button type="button" className="btnDel">
@@ -111,9 +122,11 @@ const Login = () => {
               </span>
             </div>
             <div className="loginNotiPanel">
-              <p className="loginNotiMsg formTextError">
-                아이디 또는 비밀번호가 맞지 않습니다.
-              </p>
+              {inputUnValid && (
+                <p className="loginNotiMsg formTextError">
+                  아이디 또는 비밀번호를 입력해주세요.
+                </p>
+              )}
             </div>
             <div className="loginOpt">
               <button

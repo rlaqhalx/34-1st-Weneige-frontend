@@ -27,7 +27,7 @@
         .signUpPageTitle {
           line-height: 54px;
           font-weight: 500;
-          font-size: 16px;
+          font-size: 20px;
           text-align: center;
           font-weight: bold;
         }
@@ -43,6 +43,7 @@
           -webkit-background-size: 23px auto;
           background-size: 23px auto;
           border-style: none;
+          cursor: pointer;
         }
       }
     }
@@ -62,6 +63,7 @@
       .joinForm {
         border-bottom: 1px solid #dfdfdf;
         padding-bottom: 25px;
+
         .signUpInputForm {
           margin-bottom: 15px;
 
@@ -124,10 +126,11 @@
           }
         }
       }
+
       .txtC {
         margin: 15px 0;
         text-align: center;
-        color: #898989;
+        color: #6e6e6e;
         letter-spacing: -0.7px;
         line-height: 1.43;
       }

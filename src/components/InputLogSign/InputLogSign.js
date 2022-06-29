@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import './InputLogSign.scss';
 
-const InputLogSign = ({
-  id,
-  placeholder,
-  title,
-  errortxt,
-  value,
-  name,
-  handleInput,
-  isValid,
-}) => {
-  // const { name, value, placeholder, title, errortxt } = input;
-  const [isUnValid, setIsUnValid] = useState('');
-  const validHandle = () => {
+const InputLogSign = ({ input, handleInput, isValid }) => {
+  const { name, value, placeholder, title, errortxt, type } = input;
+  const [isUnValid, setIsUnValid] = useState(false);
+
+  const validHandel = () => {
     // isValid ? setIsUnValid(false) : setIsUnValid(true);
     if (isValid) {
       setIsUnValid(false);
@@ -28,12 +20,12 @@ const InputLogSign = ({
     <div className="signUpInputForm">
       <span className="snp">
         <input
-          type="text"
+          type={type}
           className="snpText"
           placeholder={placeholder}
           title={title}
           onChange={handleInput}
-          onKeyUp={validHandle}
+          onKeyUp={validHandel}
           value={value}
           name={name}
         />
