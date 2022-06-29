@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Categories from './Categories';
-
 import './Nav.scss';
 
 const Nav = () => {
   const navigate = useNavigate();
 
   const goToLogin = () => {
-    // TODO: 로그인 상태 관련 조건식 구현 요망
-    if (!localStorage.getItem('Authorization')) {
-      navigate('/login');
-    } else {
+    if (localStorage.getItem('Authorization')) {
       alert('이미 로그인이 되어있습니다.');
+    } else {
+      navigate('/login');
     }
   };
 
