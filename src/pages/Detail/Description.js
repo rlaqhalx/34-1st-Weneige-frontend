@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Description.scss';
 
 const Description = ({ img, description, num }) => {
   const [darken, setDarken] = useState(false);
@@ -12,7 +13,7 @@ const Description = ({ img, description, num }) => {
   };
 
   return (
-    <div className="box">
+    <div className="description">
       <img className={imgboxClass} src={img} alt="product" />
       <button className="btnBox" onClick={handleDarkening}>
         {plus}

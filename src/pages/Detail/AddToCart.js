@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './AddToCart.scss';
 
 const AddToCart = ({
   colors,
@@ -13,7 +14,8 @@ const AddToCart = ({
 }) => {
   const [newPrice, setNewPrice] = useState(price);
   const [count, setCount] = useState(1);
-  const [thiscolor, setThiscolor] = useState(colorIdx);
+
+  let thiscolor = colorIdx;
 
   const calculatePrice = colorIdx => {
     let items = [...totalPrice];
@@ -44,10 +46,10 @@ const AddToCart = ({
   useEffect(() => {
     calculatePrice(colorIdx);
     calculateCount(colorIdx);
-  }, [newPrice, count]);
+  }, [count]);
 
   return (
-    <div className="detailCart">
+    <div className="addToCart">
       <span className="selectedColor">
         {colors[thiscolor]} {volume}
       </span>
@@ -72,7 +74,7 @@ const AddToCart = ({
         </button>
       </div>
       <div className="priceWrapper">
-        {newPrice}
+        {newPrice.toLocaleString()}
         <span className="won"> 원</span>
       </div>
     </div>

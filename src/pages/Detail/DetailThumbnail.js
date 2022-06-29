@@ -9,7 +9,7 @@ const DetailThumbnail = ({ images }) => {
   };
 
   return (
-    <>
+    <div className="detailThumnail">
       <section className="smallThumbnailWrapper">
         {images.map((image, index) => {
           return (
@@ -20,7 +20,7 @@ const DetailThumbnail = ({ images }) => {
         })}
       </section>
       <img className="productThumbnail" src={imgSrc} alt="product" />
-    </>
+    </div>
   );
 };
 

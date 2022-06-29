@@ -5,6 +5,11 @@ html {
 button {
   border: none;
   background-color: white;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
 }
 
 a,
@@ -15,37 +20,15 @@ a:active {
   color: inherit;
 }
 
-.smallThumbnailWrapper {
-  width: 50px;
-  height: 180px;
-  position: relative;
-  left: 150px;
-  top: 350px;
-
-  .smallThumbnail {
-    width: 58px;
-    height: 58px;
-    border: 0.15px solid #c1bebe;
-  }
-}
-
-.productThumbnail {
-  width: 450px;
-  height: 540px;
-  position: relative;
-  top: -80px;
-  left: 300px;
-}
-
 .detailNavBar {
-  width: 1450px;
+  width: 100%;
   height: 60px;
   border: 1px solid rgb(221, 221, 221);
   position: relative;
-  bottom: 550px;
+  bottom: 400px;
 
-  padding-left: 680px;
-  padding-top: 20px;
+  text-align: center;
+  line-height: 60px;
 
   .detailNavBarText {
     font-size: 16px;
@@ -59,61 +42,5 @@ a:active {
   justify-content: center;
   padding-left: 130px;
   padding-right: 130px;
-  bottom: 500px;
-
-  .box {
-    width: 370px;
-    height: 420px;
-    position: relative;
-
-    .imgBox {
-      width: 320px;
-      height: 370px;
-      position: absolute;
-      left: 25px;
-      top: 25px;
-      filter: brightness(100%);
-      transition-property: filter;
-      transition-duration: 0.25s;
-    }
-
-    .imgBoxDark {
-      width: 320px;
-      height: 370px;
-      position: absolute;
-      left: 25px;
-      top: 25px;
-      filter: brightness(50%);
-      transition-property: filter;
-      transition-duration: 0.25s;
-    }
-
-    .btnBox {
-      position: absolute;
-      right: 50px;
-      bottom: 37px;
-      font-size: 25px;
-      height: 35px;
-      width: 35px;
-      border-radius: 50%;
-      display: inline-block;
-      background-color: aliceblue;
-    }
-
-    .btnDescription {
-      position: absolute;
-      left: 40px;
-      top: 50px;
-      color: white;
-      width: 300px;
-    }
-
-    .secret {
-      position: absolute;
-      bottom: 45px;
-      left: 40px;
-      color: black;
-      background-color: aliceblue;
-    }
-  }
+  bottom: 400px;
 }

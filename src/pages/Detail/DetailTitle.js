@@ -12,18 +12,20 @@ const DetailTitle = ({
   price,
   product_id,
 }) => {
-  const [dropDown, setDropDown] = useState(false);
+  const [isDropDown, setIsDropDown] = useState(false);
   const [colorIdx, setColorIdx] = useState('0');
   const [chosenlist, setChosenlist] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
   const [totalPrice, setTotalPrice] = useState([]);
-  const [popupClass, setpopupClass] = useState(false);
+  const [isPopup, setIsPopup] = useState(false);
   const [colorList, setcolorList] = useState([]);
-  //console.log('1', colors[chosenlist[0]]);
-  //console.log('2', colors[chosenlist[1]]);
+  const [result, setResult] = useState([]);
+
+  let refinedcolorList = [];
+  let convertedColor = [];
 
   const handleDropDown = () => {
-    setDropDown(!dropDown);
+    setIsDropDown(!isDropDown);
   };
 
   const updateChosenList = colorIdx => {
@@ -52,7 +54,7 @@ const DetailTitle = ({
 
     let counts = [...totalCount];
     counts[idx] = 0;
-    //let counts = totalCount.filter(x => x !== totalCount[idx]);
+
     let prices = [...totalPrice];
     prices[idx] = 0;
 
@@ -64,25 +66,110 @@ const DetailTitle = ({
     setTotalPrice(prices);
   };
 
-  let priceSum = totalPrice.reduce((accumulator, value) => {
+  const priceSum = totalPrice.reduce((accumulator, value) => {
     return accumulator + value;
   }, 0);
 
-  let countSum = totalCount.reduce((accumulator, value) => {
+  const countSum = totalCount.reduce((accumulator, value) => {
     return accumulator + value;
   }, 0);
+
+  const refine = () => {
+    const newcolorList = [...colorList];
+    const newtotalCount = [...totalCount];
+
+    if (colorList[0] === undefined) {
+      newcolorList.shift();
+      newtotalCount.shift();
+
+      refinedcolorList = [...newcolorList];
+      setTotalCount(newtotalCount);
+    } else if (colorList[1] === undefined) {
+      newcolorList.pop();
+      newtotalCount.pop();
+
+      refinedcolorList = [...newcolorList];
+      setTotalCount(newtotalCount);
+    }
+
+    if ((colorList[0] !== undefined) & (colorList[0] !== undefined)) {
+      refinedcolorList = [...newcolorList];
+
+      setTotalCount(newtotalCount);
+    }
+  };
+
+  const convertColor = {
+    맨인블랙: 1,
+    라이트브라운: 2,
+    블라썸레드: 3,
+    자이언트핑크: 5,
+    라이트샌드: 6,
+  };
+
+  const convertId = (id, color) => {
+    if ((id === 1) & (color === 1)) return 1;
+    if ((id === 1) & (color === 2)) return 2;
+    if ((id === 2) & (color === 1)) return 3;
+    if ((id === 3) & (color === 1)) return 4;
+    if ((id === 4) & (color === 3)) return 5;
+    if ((id === 4) & (color === 5)) return 6;
+    if ((id === 5) & (color === 3)) return 7;
+    if ((id === 5) & (color === 5)) return 8;
+    if ((id === 6) & (color === 3)) return 9;
+    if ((id === 6) & (color === 5)) return 10;
+    if ((id === 7) & (color === 3)) return 11;
+    if ((id === 7) & (color === 5)) return 12;
+    if ((id === 8) & (color === 3)) return 13;
+    if ((id === 8) & (color === 5)) return 14;
+    if ((id === 9) & (color === 1)) return 15;
+    if ((id === 10) & (color === 1)) return 16;
+    if ((id === 11) & (color === 1)) return 17;
+    if ((id === 12) & (color === 6)) return 18;
+    if ((id === 13) & (color === 3)) return 19;
+    if ((id === 13) & (color === 5)) return 20;
+    if ((id === 14) & (color === 6)) return 21;
+    if ((id === 15) & (color === 1)) return 22;
+    if ((id === 16) & (color === 1)) return 23;
+  };
+
+  const handleColor = () => {
+    let arr = [];
+    for (let i = 0; i < refinedcolorList.length; i++) {
+      let element = convertColor[refinedcolorList[i]];
+      arr.push(element);
+      convertedColor = [...arr];
+    }
+  };
+
+  const handleResult = () => {
+    handleColor();
+    let arr = [];
+    for (let i = 0; i < convertedColor.length; i++) {
+      let element = convertId(product_id, convertedColor[i]);
+      arr.push(element);
+      setResult(arr);
+    }
+  };
+
+  const createResult = e => {
+    refine();
+    handleColor();
+    handleResult();
+  };
 
   const handlePopUp = () => {
-    setpopupClass(true);
+    setIsPopup(true);
+    createResult();
   };
 
   return (
-    <div className="titleWrapper">
+    <div className="detailTitle">
       <p className="title"> {korName} </p>
       <p className="englishTitle"> {engName}</p>
       <img
         className="titleIcon"
-        src="../images/detail/gray-quotation-marks.webp"
+        src="/images/detail/gray-quotation-marks.webp"
         alt="icon"
       />
       <p className="productMainDescription">{description}</p>
@@ -90,7 +177,7 @@ const DetailTitle = ({
 
       <div className="stat">
         <span> {volume} </span>
-        <span> {price} 원 </span>
+        <span> {price.toLocaleString()} 원 </span>
       </div>
 
       <button className="dropDownBtn" onClick={handleDropDown}>
@@ -98,7 +185,7 @@ const DetailTitle = ({
       </button>
       <div
         className="dropDownWrapper"
-        style={{ display: dropDown ? 'block' : 'none' }}
+        style={{ display: isDropDown ? 'block' : 'none' }}
       >
         {colors.map((color, index) => {
           return (
@@ -108,7 +195,8 @@ const DetailTitle = ({
               onClick={addToCart}
               id={index}
             >
-              {color} {volume} <span className="price">{price} 원</span>
+              {color} {volume}
+              <span className="price">{price.toLocaleString()} 원</span>
             </button>
           );
         })}
@@ -132,17 +220,16 @@ const DetailTitle = ({
       </section>
       <div className="purchaseStat">
         <span>총 {countSum} 개 </span>
-        <span className="priceText">{priceSum} 원</span>
+        <span className="priceText">{priceSum.toLocaleString()} 원</span>
       </div>
       <button className="cartBtn" onClick={handlePopUp}>
         장바구니
       </button>
       <CartPopUp
-        setpopupClass={setpopupClass}
-        popupClass={popupClass}
-        product_id={product_id}
+        setIsPopup={setIsPopup}
+        isPopup={isPopup}
+        result={result}
         totalCount={totalCount}
-        colorList={colorList}
       />
     </div>
   );

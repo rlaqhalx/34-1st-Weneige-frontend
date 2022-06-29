@@ -1,0 +1,55 @@
+.description {
+  width: 370px;
+  height: 420px;
+  position: relative;
+
+  .imgBox {
+    width: 320px;
+    height: 370px;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    filter: brightness(100%);
+    transition-property: filter;
+    transition-duration: 0.25s;
+  }
+
+  .imgBoxDark {
+    width: 320px;
+    height: 370px;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    filter: brightness(50%);
+    transition-property: filter;
+    transition-duration: 0.25s;
+  }
+
+  .btnBox {
+    position: absolute;
+    right: 50px;
+    bottom: 37px;
+    font-size: 25px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: aliceblue;
+  }
+
+  .btnDescription {
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    color: white;
+    width: 300px;
+  }
+
+  .secret {
+    position: absolute;
+    bottom: 45px;
+    left: 40px;
+    color: black;
+    background-color: aliceblue;
+  }
+}
