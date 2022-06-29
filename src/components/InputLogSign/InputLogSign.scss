@@ -1,0 +1,37 @@
+.signUpInputForm {
+  margin-bottom: 15px;
+  .snp {
+    position: relative;
+    display: block;
+
+    .snpText {
+      padding: 0 12px;
+      width: 100%;
+      height: 50px;
+      line-height: 48px;
+      color: #252525;
+      font-size: 18px;
+      letter-spacing: -0.7px;
+      border: 1px solid #e6e6e6;
+      border-radius: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .snpText::-webkit-outer-spin-button,
+    .snpText::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .btnDel {
+      display: none;
+    }
+  }
+  .signFormTextError {
+    color: #f23636;
+    border-color: #f23636 !important;
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 1.38;
+    letter-spacing: -0.65px;
+  }
+}
