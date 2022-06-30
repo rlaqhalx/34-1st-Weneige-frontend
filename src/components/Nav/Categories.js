@@ -3,6 +3,7 @@ import './Categories.scss';
 
 const Categories = () => {
   const [categoryData, setCategoryData] = useState([]);
+
   useEffect(() => {
     fetch('/data/categoryData.json')
       .then(res => res.json())
@@ -10,6 +11,7 @@ const Categories = () => {
         setCategoryData(data);
       });
   }, []);
+
   return (
     <>
       {categoryData.map(({ id, title }) => {
