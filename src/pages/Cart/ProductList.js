@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProductList.scss';
 
-const ProductList = ({ order, handleCount, deleteProduct }) => {
+const ProductList = ({ order, handleCount, deleteItem }) => {
   const { kor_name, price, color, quantity, image_url, product_option_id } =
     order;
 
@@ -34,7 +34,7 @@ const ProductList = ({ order, handleCount, deleteProduct }) => {
 
   const subtractCount = () => {
     if (quantity > 1) {
-      fetch('http://10.58.2.12:8000/carts', {
+      fetch('http://10.58.4.20:8000/carts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,23 +66,7 @@ const ProductList = ({ order, handleCount, deleteProduct }) => {
       <div className="productDetail">
         <img src={image_url} alt="skin" className="productImg" />
         <p className="productName">{kor_name}</p>
-        <button
-          className="deleteBtn"
-          onClick={() => {
-            deleteProduct();
-            fetch(
-              `http://10.58.2.12:8000/carts?product_option_id=${product_option_id}`,
-              {
-                method: 'DELETE',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization:
-                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
-                },
-              }
-            );
-          }}
-        >
+        <button className="deleteBtn" onClick={deleteItem}>
           닫기
         </button>
       </div>

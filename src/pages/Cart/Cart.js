@@ -10,7 +10,7 @@ const Cart = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    fetch('http://10.58.2.12:8000/carts', {
+    fetch('http://10.58.4.20:8000/carts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -40,9 +40,27 @@ const Cart = () => {
     }
   };
 
-  const deleteProduct = id => {
+  const deleteItem = id => {
     const remove = orderList.filter(item => item.product_option_id !== id);
-    setOrderList(remove);
+    fetch(
+      `http://10.58.4.20:8000/carts?product_option_id=${
+        orderList.find(x => x).product_option_id
+      }`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        },
+      }
+    ).then(res => {
+      if (res.ok) {
+        setOrderList(remove);
+      } else {
+        alert('다시 시도해주세요!');
+      }
+    });
   };
 
   const totalPrice = (a, b) => {
@@ -94,7 +112,7 @@ const Cart = () => {
                     key={order.product_option_id}
                     order={order}
                     handleCount={handleCount}
-                    deleteProduct={() => deleteProduct(order.product_option_id)}
+                    deleteItem={() => deleteItem(order.product_option_id)}
                   />
                 );
               })}
