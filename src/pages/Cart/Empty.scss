@@ -1,0 +1,36 @@
+.emptyCart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 170px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    opacity: 0.6;
+    background: url('../../assets/images/cartbg.png');
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .toDetail {
+    text-decoration: none;
+    color: black;
+    position: relative;
+
+    &:hover {
+      color: green;
+    }
+  }
+
+  .empty {
+    position: relative;
+    margin-bottom: 30px;
+    color: black;
+  }
+}

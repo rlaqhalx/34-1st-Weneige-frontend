@@ -1,0 +1,109 @@
+.productLists {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  border-top: 1px solid rgb(0, 0, 0, 0.1);
+
+  .sellerInfo {
+    border-radius: 15px;
+  }
+
+  .productDetail {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-bottom: 20px;
+
+    .productCheckBox {
+      position: absolute;
+      top: 0;
+      margin: 0;
+    }
+
+    .productImg {
+      width: 140px;
+      height: 100px;
+      padding: 0 20px;
+    }
+
+    .productName {
+      display: inline;
+      padding: 0 10px;
+    }
+
+    .deleteBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border: 0;
+      background: #fff;
+      font-size: 0;
+      line-height: 0;
+      text-indent: -9999px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 1px;
+        background-color: #000;
+        transform: rotate(45deg);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 1px;
+        background-color: #000;
+        transform: rotate(128deg);
+      }
+    }
+  }
+
+  .productOption {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 30px 10px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+
+    .productColor {
+      position: absolute;
+      left: 25px;
+    }
+
+    .count {
+      display: flex;
+      position: absolute;
+      left: 43%;
+
+      button {
+        border: 1px solid rgb(0, 0, 0, 0.1);
+        background-color: white;
+        width: 30px;
+        height: 30px;
+      }
+
+      .productQuantity {
+        border: 1px solid rgb(0, 0, 0, 0.1);
+        width: 30px;
+        height: 30px;
+        text-align: center;
+      }
+    }
+
+    .price {
+      display: flex;
+      position: absolute;
+      right: 25px;
+    }
+  }
+}
