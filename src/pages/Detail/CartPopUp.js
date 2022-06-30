@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import './CartPopUp.scss';
 
 const CartPopUp = ({ setIsPopup, isPopup, result, totalCount }) => {
@@ -12,15 +13,16 @@ const CartPopUp = ({ setIsPopup, isPopup, result, totalCount }) => {
   const goToCart = () => {
     navigate('/cart');
   };
+
+  const localToken = localStorage.getItem('Authorization');
+
   const submit = () => {
-    fetch('http://10.58.2.12:8000/carts', {
+    fetch(API.CART, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        Authorization: localToken,
       },
-
       body: JSON.stringify(
         result.map((el, index) => ({
           product_option_id: el,
@@ -30,11 +32,7 @@ const CartPopUp = ({ setIsPopup, isPopup, result, totalCount }) => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result) {
-          goToCart();
-        } else {
-          alert('error');
-        }
+        goToCart();
       });
   };
 

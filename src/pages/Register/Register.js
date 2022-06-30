@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import InputLogSign from '../../components/InputLogSign/InputLogSign';
+import { API } from '../../config';
 import './Register.scss';
 
 const Register = () => {
@@ -25,28 +25,27 @@ const Register = () => {
   };
 
   const goToLogin = () => {
-    navigate('/Login');
-    // fetch(`http://172.20.10.3:8000/users/signup`, {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     email: email,
-    //     name: name,
-    //     password: pw,
-    //     user_name: username,
-    //     address: address,
-    //     mobile_number: phone,
-    //   }),
-    // })
-    //   .then(res => {
-    //     if (res.ok) {
-    //       return res.json();
-    //     } else {
-    //       alert('Please check your email and password again!');
-    //     }
-    //   })
-    //   .then(result => {
-    //     navigate('/Login');
-    //   });
+    fetch(API.REGISTER, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        name: name,
+        password: pw,
+        user_name: username,
+        address: address,
+        mobile_number: phone,
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          alert('Please check your email and password again!');
+        }
+      })
+      .then(result => {
+        navigate('/Login');
+      });
   };
 
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^~*+=-])(?=.*[0-9]).{8,}$/;
@@ -54,7 +53,6 @@ const Register = () => {
 
   const emailRegex = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.]+$/;
   const emailCondition = emailRegex.test(inputValue.email);
-  // const emailCondition = email.includes('@') && email.includes('.');
 
   const isValid =
     passwordCondition &&
@@ -153,11 +151,10 @@ const Register = () => {
             }}
           >
             {INPUT_DATA.map((input, i) => {
-              //내가지은이름
               return (
                 <InputLogSign
                   key={input.id}
-                  input={input} //내가 지은 이름
+                  input={input}
                   handleInput={handleInput}
                   isValid={isValid}
                 />
@@ -166,12 +163,9 @@ const Register = () => {
 
             <div className="btnSubmit">
               <button
-                type="button"
-                // className="signUpBtn"
                 className={isValid ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
                 onClick={() => {
                   goToLogin();
-                  // alertName();
                 }}
                 disabled={!isValid}
               >

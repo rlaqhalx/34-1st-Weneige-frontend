@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { API } from '../../config';
 import './Login.scss';
 
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
 
   const [inputUnValid, setInputUnValid] = useState(false);
 
-  const validInputHandel = () => {
+  const validInputHandle = () => {
     if (isInputValid) {
       setInputUnValid(false);
     } else if (email.length < 1 && pw.length < 1) {
@@ -26,8 +26,7 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    // navigate('/register');
-    fetch(`http://172.20.10.3:8000/users/login`, {
+    fetch(API.LOGIN, {
       method: 'POST',
       body: JSON.stringify({
         email: email,
@@ -42,9 +41,8 @@ const Login = () => {
         }
       })
       .then(result => {
-        localStorage.setItem('Authorization', result.ACCESS_TOKEN);
-        // console.log(localStorage.getItem("ACCESS_TOKEN")); <-로컬스토리지에서키가 엑세스 토큰인 토큰(데이터) 빼오는법 확인
-        navigate('/register');
+        localStorage.setItem('Authorization', result.token);
+        navigate('/main');
       });
   };
 
@@ -61,7 +59,7 @@ const Login = () => {
         <div className="loginHeaderBox">
           <div className="loginHeaderInner">
             <h1 className="loginPageTitle">로그인</h1>
-            <Link to="/register">
+            <Link to="/main">
               <button className="loginClose" />
             </Link>
           </div>
@@ -96,10 +94,10 @@ const Login = () => {
                   className="inpText"
                   placeholder="이메일 (@를 포함한 이메일 형식)"
                   onChange={handleInput}
-                  onKeyUp={validInputHandel}
+                  onKeyUp={validInputHandle}
                   title="아이디 입력"
                 />
-                <button type="button" className="btnDel">
+                <button className="btnDel">
                   <span className="blind">삭제</span>
                 </button>
               </span>
@@ -136,7 +134,6 @@ const Login = () => {
                 className={isInputValid ? 'loginBtn loginBtnBlue' : 'loginBtn'}
                 onClick={() => {
                   goToMain();
-                  // alertName();
                 }}
               >
                 로그인

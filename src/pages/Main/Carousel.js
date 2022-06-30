@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Carousel.scss';
 
-// 코드 참조: https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
-
 const Carousel = ({ carouselData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -14,7 +12,6 @@ const Carousel = ({ carouselData }) => {
     } else if (newIndex >= count) {
       newIndex = 0;
     }
-
     setActiveIndex(newIndex);
   };
 

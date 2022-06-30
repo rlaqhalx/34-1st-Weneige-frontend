@@ -75,28 +75,22 @@ const DetailTitle = ({
   }, 0);
 
   const refine = () => {
-    const newcolorList = [...colorList];
-    const newtotalCount = [...totalCount];
+    const newcolorList = [];
+    const newtotalCount = [];
 
-    if (colorList[0] === undefined) {
-      newcolorList.shift();
-      newtotalCount.shift();
+    colorList.forEach(color => {
+      if (color) {
+        newcolorList.push(color);
+      }
+    });
 
-      refinedcolorList = [...newcolorList];
-      setTotalCount(newtotalCount);
-    } else if (colorList[1] === undefined) {
-      newcolorList.pop();
-      newtotalCount.pop();
-
-      refinedcolorList = [...newcolorList];
-      setTotalCount(newtotalCount);
-    }
-
-    if ((colorList[0] !== undefined) & (colorList[0] !== undefined)) {
-      refinedcolorList = [...newcolorList];
-
-      setTotalCount(newtotalCount);
-    }
+    totalCount.forEach(count => {
+      if (count !== 0) {
+        newtotalCount.push(count);
+      }
+    });
+    refinedcolorList = newcolorList;
+    setTotalCount(newtotalCount);
   };
 
   const convertColor = {
@@ -143,7 +137,6 @@ const DetailTitle = ({
   };
 
   const handleResult = () => {
-    handleColor();
     let arr = [];
     for (let i = 0; i < convertedColor.length; i++) {
       let element = convertId(product_id, convertedColor[i]);

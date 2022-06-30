@@ -17,7 +17,7 @@ const Nav = () => {
   return (
     <nav className="navBar">
       <div className="navLogo">
-        <Link to="#">
+        <Link to="/main">
           <img
             src="https://www.laneige.com/kr/ko/assets/image/a/laneige-logo.svg"
             alt="logo"
@@ -38,7 +38,5 @@ const Nav = () => {
     </nav>
   );
 };
-
-// 작업 완료되는 대로 분리 필요
 
 export default Nav;

@@ -5,6 +5,7 @@ import SortingButton from './SortingButton';
 import SearchBar from './SearchBar';
 import Carousel from './Carousel';
 import ProductItem from './ProductItem';
+import { API } from '../../config';
 import './Main.scss';
 
 const Main = () => {
@@ -12,9 +13,7 @@ const Main = () => {
   const [searchInputValue, setSearchInputValue] = useState('');
 
   useEffect(() => {
-    fetch('data/productData.json')
-      // TODO : 추후 백엔드와 통신할 때 아래 코드 사용할 것
-      // fetch('http://172.20.10.6:8000/products')
+    fetch(API.PRODUCTS)
       .then(res => res.json())
       .then(data => {
         setProductData(data.product_detail);

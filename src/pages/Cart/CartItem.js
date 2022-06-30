@@ -1,18 +1,20 @@
 import React from 'react';
+import { API } from '../../config';
 import './CartItem.scss';
 
 const cartItem = ({ order, handleCount, deleteCartItem }) => {
   const { kor_name, price, color, quantity, image_url, product_option_id } =
     order;
 
+  const localToken = localStorage.getItem('Authorization');
+
   const addCount = () => {
-    if (quantity < 99) {
-      fetch('http://10.58.2.12:8000/carts', {
+    if (quantity < 10) {
+      fetch(API.CART, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+          Authorization: `${localToken}`,
         },
         body: JSON.stringify([
           {
@@ -34,12 +36,11 @@ const cartItem = ({ order, handleCount, deleteCartItem }) => {
 
   const subtractCount = () => {
     if (quantity > 1) {
-      fetch('http://10.58.4.20:8000/carts', {
+      fetch(API.CART, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+          Authorization: `${localToken}`,
         },
         body: JSON.stringify([
           {

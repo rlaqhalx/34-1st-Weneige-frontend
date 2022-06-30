@@ -6,7 +6,6 @@ const InputLogSign = ({ input, handleInput, isValid }) => {
   const [isUnValid, setIsUnValid] = useState(false);
 
   const validHandle = () => {
-    // isValid ? setIsUnValid(false) : setIsUnValid(true);
     if (isValid) {
       setIsUnValid(false);
     } else if (value.length < 1) {

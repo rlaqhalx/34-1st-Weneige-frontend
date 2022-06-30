@@ -3,19 +3,21 @@ import CartItem from './CartItem';
 import Empty from './Empty';
 import Footer from '../../components/Footer/Footer';
 import Nav from '../../components/Nav/Nav';
+import { API } from '../../config';
 import './Cart.scss';
 
 const Cart = () => {
   const [orderList, setOrderList] = useState([]);
   const [isVisible, setIsVisible] = useState(true);
 
+  const localToken = localStorage.getItem('Authorization');
+
   useEffect(() => {
-    fetch('http://10.58.4.20:8000/carts', {
+    fetch(API.CART, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        Authorization: localToken,
       },
     })
       .then(res => res.json())
@@ -42,12 +44,11 @@ const Cart = () => {
 
   const deleteCartItem = id => {
     const remove = orderList.filter(item => item.product_option_id !== id);
-    fetch(`http://10.58.4.20:8000/carts?product_option_id=${id}`, {
+    fetch(`${API.CART}?product_option_id=${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+        Authorization: localToken,
       },
     }).then(res => {
       if (res.ok) {
@@ -75,7 +76,6 @@ const Cart = () => {
       });
     });
   };
-
   return (
     <>
       <Nav />
