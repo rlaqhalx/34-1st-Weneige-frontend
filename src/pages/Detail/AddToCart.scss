@@ -1,0 +1,68 @@
+.addToCart {
+  width: 380px;
+  height: 90px;
+  background-color: #f3f3f3;
+  margin-top: 20px;
+  position: relative;
+
+  .selectedColor {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+
+  .deleteBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: whitesmoke;
+    font-size: 20px;
+    color: #5f5f5f;
+    border: none;
+  }
+
+  .buttonWrapper {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    width: 130px;
+    height: 36px;
+    background-color: white;
+    border: 0.1px solid #aaaaaa;
+
+    .removeBtn {
+      width: 43px;
+      height: 34px;
+      margin-right: 13px;
+      font-size: 15px;
+      border: none;
+      border-right: 0.1px solid #aaaaaa;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .addBtn {
+      position: absolute;
+      right: 0;
+      width: 43px;
+      height: 34px;
+      font-size: 15px;
+      border: none;
+      border-left: 0.1px solid #aaaaaa;
+      background-color: white;
+      cursor: pointer;
+    }
+  }
+
+  .priceWrapper {
+    position: absolute;
+    font-weight: 700;
+    right: 10px;
+    bottom: 15px;
+    font-size: 20px;
+
+    .won {
+      font-size: 10px;
+    }
+  }
+}

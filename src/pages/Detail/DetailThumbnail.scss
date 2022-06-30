@@ -1,0 +1,28 @@
+.detailThumnail {
+  .smallThumbnailWrapper {
+    width: 50px;
+    height: 180px;
+    position: relative;
+    left: 150px;
+    top: 350px;
+    button {
+      border: none;
+      background: white;
+      cursor: pointer;
+    }
+
+    .smallThumbnail {
+      width: 58px;
+      height: 58px;
+      border: 0.15px solid #c1bebe;
+    }
+  }
+
+  .productThumbnail {
+    width: 450px;
+    height: 540px;
+    position: relative;
+    top: 0px;
+    left: 300px;
+  }
+}
