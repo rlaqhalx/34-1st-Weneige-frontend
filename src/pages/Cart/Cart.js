@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProductList from './ProductList';
+import CartItem from './CartItem';
 import Empty from './Empty';
 import Footer from '../../components/Footer/Footer';
 import Nav from '../../components/Nav/Nav';
@@ -40,21 +40,16 @@ const Cart = () => {
     }
   };
 
-  const deleteItem = id => {
+  const deleteCartItem = id => {
     const remove = orderList.filter(item => item.product_option_id !== id);
-    fetch(
-      `http://10.58.4.20:8000/carts?product_option_id=${
-        orderList.find(x => x).product_option_id
-      }`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
-        },
-      }
-    ).then(res => {
+    fetch(`http://10.58.4.20:8000/carts?product_option_id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.5BoIX3eJmneF6w-Jb44BzDDZ3zt0gtl01NRPvOicAWc',
+      },
+    }).then(res => {
       if (res.ok) {
         setOrderList(remove);
       } else {
@@ -108,11 +103,13 @@ const Cart = () => {
             {isVisible &&
               orderList.map(order => {
                 return (
-                  <ProductList
+                  <CartItem
                     key={order.product_option_id}
                     order={order}
                     handleCount={handleCount}
-                    deleteItem={() => deleteItem(order.product_option_id)}
+                    deleteCartItem={() =>
+                      deleteCartItem(order.product_option_id)
+                    }
                   />
                 );
               })}

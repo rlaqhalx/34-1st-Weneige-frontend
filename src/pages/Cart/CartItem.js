@@ -1,7 +1,7 @@
 import React from 'react';
-import './ProductList.scss';
+import './CartItem.scss';
 
-const ProductList = ({ order, handleCount, deleteItem }) => {
+const cartItem = ({ order, handleCount, deleteCartItem }) => {
   const { kor_name, price, color, quantity, image_url, product_option_id } =
     order;
 
@@ -66,7 +66,7 @@ const ProductList = ({ order, handleCount, deleteItem }) => {
       <div className="productDetail">
         <img src={image_url} alt="skin" className="productImg" />
         <p className="productName">{kor_name}</p>
-        <button className="deleteBtn" onClick={deleteItem}>
+        <button className="deleteBtn" onClick={deleteCartItem}>
           닫기
         </button>
       </div>
@@ -89,4 +89,4 @@ const ProductList = ({ order, handleCount, deleteItem }) => {
   );
 };
 
-export default ProductList;
+export default cartItem;
