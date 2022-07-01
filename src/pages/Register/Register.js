@@ -164,9 +164,6 @@ const Register = () => {
             <div className="btnSubmit">
               <button
                 className={isValid ? 'signUpBtn signUpBtnBlue' : 'signUpBtn'}
-                onClick={() => {
-                  goToLogin();
-                }}
                 disabled={!isValid}
               >
                 동의하고 가입
