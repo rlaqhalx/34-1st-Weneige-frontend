@@ -11,9 +11,6 @@ Frontend : [김은정](https://github.com/banhera),[김보미](https://github.co
 
 Period : 2022. 06. 20 ~ 2022. 07. 01
 
-### Demo(video)
-
-
 
 ### Tech Stack
 
